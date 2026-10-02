@@ -8,7 +8,7 @@ We will begin with eight required fields: identifier, title, source URL, lesson 
 
 Authors will reuse metadata from their tutorial sources and supply missing fields in a small accompanying file, without rewriting lessons. Missing values will be explicit. An adapter can run a check only when its required fields are supplied or reliably inferred. Nominations with unknown maintainers or licenses will remain pending review.
 
-We will invite engine maintainers and educators to review the draft. Their feedback and the pilot's measures of author effort will guide revisions before we publish version 1.0 with example records and adoption guidance.
+We will align the prototype with this draft and invite engine maintainers and educators to review it. Their feedback and the pilot's measures of author effort will guide revisions before we publish version 1.0 with example records and adoption guidance.
 
 ## Milestone 2: Adapters for existing engines
 

@@ -10,15 +10,18 @@ Existing engines will run the tutorials. Browser runtimes, new execution engines
 
 The requested budget is **USD 10,000**, covering 200 hours at USD 50/hour across five milestones: 120 hours and USD 6,000 for Hutchins (60%), and 80 hours and USD 4,000 for Bharti (40%). The indexing pilot will cover 5–10 existing tutorials, and at least three external contributors will review the work during the grant.
 
-## Evidence needed before submission
+## Preliminary work
+
+The [tutorialverse prototype](https://github.com/tutorial-verse/tutorialverse) reads YAML metadata and returns structured validation results. Its local tests use synthetic records with learnr, learnr2, and Quarto Live identifiers. It does not contact tutorial URLs, render lessons, or execute exercises; adapters and real-tutorial indexing remain proposed work.
 
 Public outreach is documented in `proposal/01-signatories.qmd`. An initial community response pointed to `learnr2` and Quarto Live; it does not establish maintainer support for a shared schema.
 
-- Seek feedback from `learnr2` maintainers on the usefulness of interoperability work.
-- Seek agreement from one or two `learnr`, Quarto, or education maintainers on a minimal metadata schema.
-- Demonstrate indexing 5–10 existing tutorials. Publish the records and check results, including missing fields and manual corrections. Record execution tests separately.
-- Confirm the start date and package-name availability. The proposal now includes the agreed USD 10,000 budget and co-lead effort allocation.
-- Update the preliminary-work section and baseline counts with evidence actually obtained. A completed pilot must count toward the baseline. Review the final PDF before submission.
+## Next steps
+
+- Seek engine-maintainer and educator feedback on the minimal schema and supported checks.
+- Align the prototype fields with the proposed schema: the prototype currently requires topics, while the proposal requires learning objectives and makes topics optional.
+- Use the funded indexing pilot to test 5–10 existing tutorials and record missing metadata and author effort. Record exercise execution separately.
+- Confirm the start date and package-name availability, and update the preliminary-work section and baseline counts as work is completed.
 
 ## Deadline and submission
 

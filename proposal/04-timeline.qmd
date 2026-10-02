@@ -2,7 +2,7 @@
 
 ## Preliminary work
 
-We reviewed existing tutorial tools alongside registries and metadata schemas. [Community feedback](https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742) helped us focus the project on common metadata and checks. Our prior teaching work includes [Hutchins's candidate genetic variants module](https://cfdetrainingcenter.github.io/candidate-genetic-variants/) and [Bharti's r-for-beginners lessons](https://github.com/samuelbharti/r-for-beginners).
+The [tutorialverse prototype](https://github.com/tutorial-verse/tutorialverse) reads YAML metadata and checks required fields, field types, engine identifiers, URL syntax, and duplicate IDs when other record IDs are supplied. It returns structured pass/fail results and field-level issues. Local tests pass using synthetic records, including records labeled learnr, learnr2, and Quarto Live. The prototype does not contact lesson URLs, render tutorials, or run exercises. Engine integration and indexing real tutorials remain proposed work. Our review of existing tools and [community feedback](https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742) informed this scope.
 
 ## Schedule and working practices
 

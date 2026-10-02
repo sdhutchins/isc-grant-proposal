@@ -4,4 +4,6 @@ Instructors and learners choosing an R tutorial often have to inspect its reposi
 
 **tutorialverse will help instructors and learners find R tutorials suited to their needs and see the reported prerequisites, check results, and review status.** Authors will describe tutorials with shared metadata. An R package will use adapters to run supported checks through existing engines and produce common reports. A searchable registry will combine descriptions, reports, and human reviews, linking readers to original lessons. Community review and scheduled checks will help keep entries current.
 
+A [metadata-only prototype](https://github.com/tutorial-verse/tutorialverse) already reads YAML records and reports validation failures. It does not yet render tutorials or run exercises.
+
 Over 12 months, we will develop support for learnr, learnr2, and Quarto Live, index 5–10 existing tutorials, and use four small examples to test the adapters across teaching contexts. Carpentries-style materials will also be indexed, with stated limits on automated checks. Existing tools will provide browser execution and static hosting. We request USD 10,000 for this work.
