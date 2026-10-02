@@ -1,8 +1,8 @@
 # Success
 
-Authors will be able to describe and check existing tutorials without changing tools. Instructors will be able to compare requirements, validation records, and review status across engines.
+Authors will be able to describe and check existing tutorials without changing tools. Learners will be able to find materials suited to their goals and experience, while instructors can assess lessons for reuse. Both will be able to compare requirements and check results across engines, with each tutorial's review status clearly stated.
 
-The baseline records results currently documented for tutorialverse. We will update it at grant start to include any completed pilot work.
+The table compares documented results with grant-end targets. We will update the baseline at grant start to include any completed pilot work.
 
 | Measure | Documented baseline | Grant-end target |
 |--------------------------------|-------------------|--------------------------------|
@@ -13,8 +13,8 @@ The baseline records results currently documented for tutorialverse. We will upd
 | Integration templates | 0 demonstrated | 3–4 |
 | Reusable tutorial-validation workflow | 0 demonstrated | At least 1 |
 
-Completion also requires version 1.0 of the schema, R package, and registry, with review, governance, and stale-resource policies published and exercised in the pilot.
+Completion requires version 1.0 of the schema, R package, and registry. We must also publish and test the review and governance policies during the pilot, including procedures for handling stale resources.
 
-Validation success will mean passing the checks reported for that engine and environment. During the grant, we will track missing metadata and the work authors need to supply it, alongside external submissions and review participation. After release, validation freshness and broken links will guide maintenance; the packages represented in the registry will help identify gaps in coverage.
+Validation will apply only to the checks reported for each engine and environment. During the grant, we will track external submissions and review participation, alongside the effort authors spend supplying missing metadata. After release, outdated check results and broken links will guide maintenance, while package coverage will help us identify gaps in the registry.
 
 Future work could add adapters for other tutorial engines or connect the registry to pkgdown, R-universe, and educational catalogs. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the initial funded scope.

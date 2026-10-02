@@ -2,7 +2,7 @@
 
 ## Preliminary work
 
-We have reviewed tutorial engines, registries, and metadata schemas and used [community feedback](https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742) to focus the project on common metadata and checks. Our prior teaching work includes [Hutchins's candidate genetic variants module](https://cfdetrainingcenter.github.io/candidate-genetic-variants/) and [Bharti's r-for-beginners lessons](https://github.com/samuelbharti/r-for-beginners).
+We reviewed existing tutorial tools alongside registries and metadata schemas. [Community feedback](https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742) helped us focus the project on common metadata and checks. Our prior teaching work includes [Hutchins's candidate genetic variants module](https://cfdetrainingcenter.github.io/candidate-genetic-variants/) and [Bharti's r-for-beginners lessons](https://github.com/samuelbharti/r-for-beginners).
 
 ## Schedule and working practices
 
@@ -14,7 +14,7 @@ We have reviewed tutorial engines, registries, and metadata schemas and used [co
 | Months 9–10 | Pilot nominations and human review with external contributors. Test stale-entry handling and gather usability feedback. |
 | Months 11–12 | Complete example tutorial and integration-template checks. Address high-priority feedback and release version 1.0 of the package, specification, and registry with maintenance guidance. |
 
-We will work openly on GitHub, using issues and milestones to track progress and pull requests for code review. We will publish monthly updates and milestone reports and invite community feedback. Development will use testthat for tests, pkgdown for documentation, and renv to reproduce software environments, with R-universe distribution where appropriate.
+We will work openly on GitHub, using issues and milestones to track progress and pull requests for code review. We will publish monthly updates and milestone reports and invite community feedback. Package tests will use testthat, with renv to reproduce software environments. We will publish documentation with pkgdown and distribute the package through R-universe where appropriate.
 
 Code will use the MIT license. Newly authored content and documentation will use CC BY 4.0 where compatible with source obligations; adaptations will retain required attribution and licensing. We will share release announcements and integration guidance with R education communities.
 
@@ -35,8 +35,8 @@ If funding is reduced, the schema and validation tools can be used independently
 
 ## Risks and maintenance
 
-Adoption is the main uncertainty. A metadata schema will have little value if authors find it burdensome or it duplicates fields they already maintain. Early consultation and the indexing pilot will test this assumption. We will reuse existing metadata and revise requirements in response to documented author effort before freezing version 1.0.
+Adoption is the main uncertainty. Authors may find the schema burdensome, particularly if it duplicates metadata they already maintain. Early consultation and the indexing pilot will help us identify that burden. We will reuse existing metadata and revise the requirements in response to measured author effort before finalizing version 1.0.
 
 Engine changes could break adapters or expose differences in test coverage. We will document supported versions and browser or server requirements, and use the example tutorials to detect regressions.
 
-The registry will need ongoing attention. Entries will name maintainers and retain source links, validation dates, and status. Scheduled checks and an archival policy will help contributors address stale resources. Public contribution and governance guidance will allow others to maintain the project without relying on the two leads for every change.
+Public contribution and governance guidance will help others maintain the registry without relying on the two leads for every change. Entries will name maintainers and retain source links, validation dates, and status. Scheduled checks and an archival policy will help contributors address stale resources.
