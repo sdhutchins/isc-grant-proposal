@@ -16,6 +16,13 @@ format:
   html:
     embed-resources: true
   hikmah-pdf:
+    include-in-header:
+      - text: |
+          % Keep references compact within the proposal's five-page limit.
+          \AtBeginDocument{%
+            \let\originalCSLReferences\CSLReferences
+            \renewcommand{\CSLReferences}[2]{\originalCSLReferences{#1}{0}\setlength{\itemsep}{2pt}}%
+          }
     geometry:
       - top=0.9in
       - bottom=0.9in
@@ -35,6 +42,8 @@ bibliography: references.bib
 {{< include proposal/04-timeline.qmd >}}
 
 {{< include proposal/05-success.qmd >}}
+
+# References
 
 ::: refs
 :::
