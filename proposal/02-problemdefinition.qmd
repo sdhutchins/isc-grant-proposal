@@ -2,7 +2,7 @@
 
 Learners need tutorials that match their goals and current knowledge; instructors need lessons they can assess and reuse in their teaching. Both need clear information about content, prerequisites, difficulty, and duration. They also need evidence that the exercises still work, since a tutorial may remain online after they break or its author stops maintaining it.
 
-learnr runs tutorials as Shiny applications [@learnr]. learnr2 builds on Quarto Live, which uses webR to execute R in the browser [@learnr2; @quartolive]. tutorialverse will give instructors and learners a common way to compare tutorial descriptions and check results across these engines. We will also work with Carpentries and Bioconductor teaching materials.
+The tools used to build a lesson also affect how it runs. learnr runs tutorials as Shiny applications [@learnr]. learnr2 builds on Quarto Live, which uses webR to execute R in the browser [@learnr2; @quartolive]. tutorialverse will give instructors and learners a common way to compare tutorial descriptions and check results across these engines.
 
 ## Evidence of need and prior work
 
@@ -10,8 +10,8 @@ For his Quarto exercises, @handel2025 compared learnr, webexercises, checkdown, 
 
 Discussions in the learnr community document difficulties [integrating custom Shiny questions](https://github.com/rstudio/learnr/discussions/719) and a report of [Python exercises working locally but failing after deployment](https://github.com/rstudio/learnr/issues/821). These reports illustrate support needs; they do not establish how often tutorials fail.
 
-The [rstats-ed project](https://github.com/rstudio-education/rstats-ed) assembled a user-curated list of R courses and learning materials, while acknowledging that it could not be comprehensive. Glittr.org helps users find and compare teaching repositories; its 2024 paper explicitly excludes evaluation of their educational quality [@vangeest2024].
+The [rstats-ed project](https://github.com/rstudio-education/rstats-ed) addressed discovery with a user-curated list of R courses and learning materials, while acknowledging that it could not be comprehensive. Glittr.org helps users find and compare teaching repositories; its 2024 paper explicitly excludes evaluation of their educational quality [@vangeest2024].
 
 TeSS aggregates training metadata, and Bioschemas provides shared descriptions for training resources [@garcia2020; @castro2023]. The Galaxy Training Network combines automated checks with community review and ongoing maintenance [@hiltemann2023].
 
-tutorialverse will build on this work across R tutorial engines. We will map tutorial descriptions to existing standards and link check results to human reviews and maintenance information. Results will name the tested exercises and dependencies and record the environment and date. Existing engines will run the tutorials; a new engine, browser runtime, or learning-management system is outside the project scope. Static hosting will remain a deployment mode to describe and check.
+tutorialverse will connect these functions across R tutorial engines, mapping descriptions to existing standards and linking check results with human reviews and maintenance information. Reports will name tested exercises and dependencies and record the environment and date. Existing engines will run tutorials. New engines, browser runtimes, and learning-management systems are outside scope; static hosting remains a deployment mode to describe and check.

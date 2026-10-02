@@ -1,6 +1,6 @@
 # Success
 
-Authors will be able to describe and check existing tutorials without changing tools. The registry will help learners choose materials suited to their goals and experience, and help instructors assess lessons for reuse. Both will see the requirements, check results, and review status in a common format across engines.
+Learners will be able to judge whether a tutorial suits their goals, and instructors whether they can reuse it. The registry will show available requirements, check results, review status, and missing information. Authors can also describe and check tutorials in their own repositories without joining the registry.
 
 The table compares documented results with grant-end targets. We will update the baseline at grant start to include any completed pilot work.
 
@@ -13,7 +13,7 @@ The table compares documented results with grant-end targets. We will update the
 | Integration templates | 0 demonstrated | 3–4 |
 | Reusable tutorial-validation workflow | 0 demonstrated | At least 1 |
 
-Completion requires version 1.0 of the schema, R package, and registry. The pilot must also test published review and governance policies, including procedures for handling stale resources.
+Completion requires version 1.0 of the schema, R package, and registry. The registry pilot must also test published review and governance policies, including procedures for nominations, human review, and handling stale resources.
 
 Validation will apply only to the checks reported for each engine and environment. During the grant, we will track external submissions and review participation, and measure the effort authors spend supplying missing metadata. After release, we will use outdated check results and broken links to prioritize maintenance, and package coverage to identify gaps in the registry.
 

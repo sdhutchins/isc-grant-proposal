@@ -1,5 +1,7 @@
 # Proposal
 
+The five milestones follow a tutorial from description through checking, discovery, and review.
+
 ## Milestone 1: A minimal metadata schema
 
 We will begin with eight required fields: identifier, title, source URL, lesson URL, engine or format, maintainer, license, and learning objectives. We will map these fields to Schema.org and the Bioschemas TrainingMaterial profile where applicable. Topic, level, prerequisites, packages, deployment mode, duration, accessibility information, and software versions will be optional in the initial schema. The checking tools will generate validation dates and results.
@@ -12,7 +14,7 @@ We will invite engine maintainers and educators to review the draft. Their feedb
 
 Adapters will connect existing engines to tutorialverse by translating their metadata and check results into a shared format. Proposed interfaces include `learnr_adapter()`, `learnr2_adapter()`, and `quarto_adapter()`, with Quarto Live support in the Quarto adapter. We will refine these interfaces with maintainers and document supported versions and features.
 
-Adapters may invoke an engine's existing build or checking tools; the engine remains responsible for execution. Conversion between engines is outside the adapters' scope. A capability table will show each adapter's support for metadata import, rendering checks, code execution, and accessibility checks. Carpentries-style materials can be indexed after metadata and link checks. Further checks will depend on the lesson's build system, with those limits stated in the registry.
+Adapters may invoke an engine's existing build or checking tools; the engine remains responsible for execution. Conversion between engines is outside the adapters' scope. A capability table will show each adapter's support for metadata import, rendering checks, code execution, and accessibility checks. Engines can support different checks while reporting results in the same format. Carpentries-style materials can be indexed after metadata and link checks. Further checks will depend on the lesson's build system, with those limits stated in the registry.
 
 ## Milestone 3: Validation across engines
 
@@ -28,7 +30,7 @@ The registry will link tutorial descriptions to the original repositories and pu
 
 Readers will filter by topic, package, level, learning objective, engine, and deployment mode when those fields are available. Each entry will show duration and maintenance status when known, and distinguish metadata validity from execution checks and human review. Scheduled checks will flag broken links and outdated validation records.
 
-The pilot will index 5–10 existing tutorials across the supported formats. We will record missing fields and manual corrections to measure author effort. Completion will require valid records and working search results; claims about execution will depend on separate adapter tests.
+The indexing pilot will cover 5–10 existing tutorials across the supported formats. We will record missing fields and manual corrections to measure author effort. Completion will require valid records and working search results; claims about execution will depend on separate adapter tests.
 
 ## Milestone 5: Review, governance, and example tutorials
 
@@ -36,4 +38,4 @@ Authors will submit entries through structured pull requests; others can nominat
 
 We will use four small example tutorials to test the adapters: renv, package development with usethis and devtools, an introductory DESeq2 workflow, and a Carpentries R companion. We will choose representative exercises and adapt existing material under compatible licenses. Bharti's r-for-beginners lessons and Bioconductor training resources offer starting points.
 
-During development, the examples will test metadata mapping and validation reports as well as each engine's checks. Together they will cover all three adapters, without requiring every tutorial to run under every engine. Tests will include browser interaction where supported and local or server execution where needed. Three or four small integration templates will show authors how to connect existing lessons through their chosen engine.
+These examples will test metadata mapping, validation reports, and each engine's checks; the indexing pilot will test how existing tutorials are described and found. The four examples will collectively cover all three adapters, without requiring every tutorial to run under every engine. Tests will include browser interaction where supported and local or server execution where needed. Three or four small integration templates will show authors how to connect existing lessons through their chosen engine.
