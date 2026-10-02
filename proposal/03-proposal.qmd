@@ -6,34 +6,34 @@ We will begin with eight required fields: identifier, title, source URL, lesson 
 
 Authors will reuse metadata from their tutorial sources and supply missing fields in a small accompanying file, without rewriting lessons. Missing values will be explicit. An adapter can run a check only when its required fields are supplied or reliably inferred. Nominations with unknown maintainers or licenses will remain pending review.
 
-Engine maintainers and educators will be invited to review the draft. The pilot will measure author effort and inform version 1.0 of the schema, published with example records and adoption guidance.
+We will invite engine maintainers and educators to review the draft. Their feedback and the pilot's measures of author effort will guide revisions before we publish version 1.0 with example records and adoption guidance.
 
 ## Milestone 2: Adapters for existing engines
 
-Adapters will connect each engine to the common checking interface, translating its metadata and check results into the shared format. Proposed interfaces include `learnr_adapter()`, `learnr2_adapter()`, and `quarto_adapter()`, with Quarto Live support in the Quarto adapter. We will refine the interfaces with maintainers and document the versions and features each adapter supports.
+Adapters will connect existing engines to tutorialverse by translating their metadata and check results into a shared format. Proposed interfaces include `learnr_adapter()`, `learnr2_adapter()`, and `quarto_adapter()`, with Quarto Live support in the Quarto adapter. We will refine these interfaces with maintainers and document supported versions and features.
 
-Adapters may invoke an engine's existing build or checking tools; the engine remains responsible for execution. Conversion between engines is outside the adapters' scope. A capability table will distinguish metadata import, rendering checks, code execution, and accessibility checks. For Carpentries-style materials, common metadata and link checks will support indexing; deeper checks will depend on the lesson's build system. Registry entries will state those limits.
+Adapters may invoke an engine's existing build or checking tools; the engine remains responsible for execution. Conversion between engines is outside the adapters' scope. A capability table will show each adapter's support for metadata import, rendering checks, code execution, and accessibility checks. Carpentries-style materials can be indexed after metadata and link checks. Further checks will depend on the lesson's build system, with those limits stated in the registry.
 
 ## Milestone 3: Validation across engines
 
-`check_tutorial()` will combine common checks with the selected adapter. It will check metadata, links, and required files, then assess declared dependencies and package versions. Where the engine supports it, the adapter will test rendering and executable code and identify missing or duplicate exercise identifiers. Basic automated accessibility checks will accompany human review of keyboard use and instructional clarity.
+`check_tutorial()` will combine common checks with the selected adapter. It will check metadata, links, and required files, then assess declared dependencies and package versions. When supported by the engine, the adapter will test rendering and code execution, and identify missing or duplicate exercise identifiers. Basic automated accessibility checks will accompany human review of keyboard use and instructional clarity.
 
-Every report will identify failing fields or exercises and record the tested environment, source version, and date. Across engines, unsupported or unrun checks will remain distinct from passes and failures. Interactive exercises must be tested directly: a reachable page, a successful render, or precomputed output is not enough. Automated checks alone will not establish teaching quality or full accessibility.
+Reports will identify failing fields or exercises and record the test environment, source version, and date. For every engine, they will distinguish unsupported or unrun checks from passes and failures. Interactive exercises must be tested directly: a reachable page, a successful render, or precomputed output is not enough. Automated checks alone will not establish teaching quality or full accessibility.
 
 We will publish a reusable GitHub Actions workflow and integration guidance so authors can run checks in their own repositories without joining the registry. We will test the package on Linux, macOS, and Windows, using examples with known faults to verify that the checks detect problems.
 
 ## Milestone 4: A searchable tutorial registry
 
-The registry will link tutorial descriptions to the original repositories and published lessons. Authors will retain responsibility for content and hosting. YAML entries will feed a searchable website and a published `index.json` through automated builds. A proposed `tutorial_search()` function will return results as an R data frame.
+The registry will link tutorial descriptions to the original repositories and published lessons. Authors will retain responsibility for content and hosting. Automated builds will use YAML entries to create the searchable website and publish `index.json`. A proposed `tutorial_search()` function will return results as an R data frame.
 
 Readers will filter by topic, package, level, learning objective, engine, and deployment mode when those fields are available. Each entry will show duration and maintenance status when known, and distinguish metadata validity from execution checks and human review. Scheduled checks will flag broken links and outdated validation records.
 
-The pilot will index 5–10 existing tutorials across the supported formats, recording missing fields and manual corrections to measure author effort. Completion will require valid records and working search results. Execution claims will require separate adapter tests.
+The pilot will index 5–10 existing tutorials across the supported formats. We will record missing fields and manual corrections to measure author effort. Completion will require valid records and working search results; claims about execution will depend on separate adapter tests.
 
 ## Milestone 5: Review, governance, and example tutorials
 
-Authors will submit entries through structured pull requests, and others will be able to nominate tutorials. Automated checks will precede human review of instructional clarity, accessibility, scope, licensing, and maintenance expectations. Review criteria will draw on open lesson-review practices [@carpentrieslab2022]. Published guidance will distinguish nominations from author submissions and explain the process for correcting, removing, or archiving entries. We will also document responsibility for maintaining each part of tutorialverse.
+Authors will submit entries through structured pull requests; others can nominate tutorials. Automated checks will precede human review of instructional clarity, accessibility, scope, licensing, and maintenance expectations. Review criteria will draw on open lesson-review practices [@carpentrieslab2022]. Our guidance will distinguish nominations from author submissions and explain procedures for correcting, removing, or archiving entries. It will also specify responsibility for maintaining each part of tutorialverse.
 
 We will use four small example tutorials to test the adapters: renv, package development with usethis and devtools, an introductory DESeq2 workflow, and a Carpentries R companion. We will choose representative exercises and adapt existing material under compatible licenses. Bharti's r-for-beginners lessons and Bioconductor training resources offer starting points.
 
-During development, the examples will test metadata mapping and validation reports as well as each engine's checks. Together they will cover all three adapters; each tutorial need not run under every engine. Tests will include browser interaction where supported and local or server execution where needed. Three or four small integration templates will help authors connect existing lessons to tutorialverse through their chosen engine.
+During development, the examples will test metadata mapping and validation reports as well as each engine's checks. Together they will cover all three adapters, without requiring every tutorial to run under every engine. Tests will include browser interaction where supported and local or server execution where needed. Three or four small integration templates will show authors how to connect existing lessons through their chosen engine.

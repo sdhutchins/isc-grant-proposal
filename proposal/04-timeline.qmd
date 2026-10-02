@@ -35,8 +35,8 @@ If funding is reduced, the schema and validation tools can be used independently
 
 ## Risks and maintenance
 
-Adoption is the main uncertainty. Authors may find the schema burdensome, particularly if it duplicates metadata they already maintain. Early consultation and the indexing pilot will help us identify that burden. We will reuse existing metadata and revise the requirements in response to measured author effort before finalizing version 1.0.
+Adoption is the main uncertainty. Authors may find the schema burdensome if it duplicates metadata they already maintain. We will reuse existing metadata and use early consultation and the indexing pilot to measure author effort, then revise the requirements before finalizing version 1.0.
 
 Engine changes could break adapters or expose differences in test coverage. We will document supported versions and browser or server requirements, and use the example tutorials to detect regressions.
 
-Public contribution and governance guidance will help others maintain the registry without relying on the two leads for every change. Entries will name maintainers and retain source links, validation dates, and status. Scheduled checks and an archival policy will help contributors address stale resources.
+We will document contribution and governance procedures so others can maintain the registry without relying on the two leads for every change. Entries will name maintainers and retain source links, validation dates, and status. Scheduled checks and an archival policy will help contributors address stale resources.
