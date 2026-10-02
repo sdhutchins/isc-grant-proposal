@@ -1,50 +1,40 @@
 # The proposal
-<!--
-How are you going to solve the problem? Include the concrete actions you
-will take and an estimated timeline. What are likely failure modes and
-how will you recover from them?
-
-This is where the proposal should be outlined.
--->
 
 ## Overview
-<!--
-At a high-level address what your proposal is and how it will address
-the problem identified. Highlight any benefits to the R Community that
-follow from solving the problem. This should be your most compelling
-section.
 
-Include concrete actions you will take and estimated timeline.
--->
+Three parts fit together. `tutorialindex` is a small R package with a metadata schema, a validator and a scaffolding function. A template repository turns that schema into a publishing pipeline for quarto-live tutorials. An index site lists every tutorial whose metadata passes the validator, with search by package, level and topic. Three reference tutorials prove the pipeline, including one that loads Bioconductor packages in the browser. The working name tutorialindex is free on CRAN. The index accepts tutorials built with any tool: a learnr tutorial on a Shiny server, a swirl course, a Carpentries lesson and a quarto-live page all get an entry, as long as the entry validates.
+
+Benefits to the R community: one searchable place for R tutorials, with machine-readable metadata that R-universe or pkgdown can consume. A publishing template that takes an author from a .qmd file to a live tutorial on GitHub Pages in one afternoon, with Bioconductor packages working. A validator that tells authors what is missing before a human looks at it.
 
 ## Detail
-<!--
-Go into more detail about the specifics of the project and how it delivers
-against the problem.
-
-Depending on project type the detail section should include:
--->
 
 ### Minimum Viable Product
 
-<!--
-What is the smallest thing you can build that delivers value to your users?
--->
+At the end of milestone 1:
+
+- A metadata schema in YAML with these required fields: title, url, authors, license, format (quarto-live, learnr2, learnr, swirl, static), packages taught, level (beginner, intermediate, advanced), estimated minutes, R version last checked, date last checked. Optional fields: prerequisites, topics, language, source repository, and the Carpentries or Bioconductor lesson it accompanies.
+- `tutorialindex::validate_entry()` checks a YAML file against the schema, checks that the URL answers, and checks that every package named exists on CRAN or Bioconductor.
+- `tutorialindex::create_tutorial()` copies the template into a new repository: a Quarto project with the quarto-live extension, a gradethis exercise example, the metadata file, a GitHub Action that renders and publishes to GitHub Pages, and a `repos` setting that adds r-universe so Bioconductor packages load in webR.
+
+An author who uses these two functions has a published, listed tutorial without reading a build guide.
 
 ### Architecture
 
-<!--
-What does the high-level architecture look like?
--->
+Three repositories:
+
+1. `tutorialindex` (R package): schema, validator, scaffolding, and `tutorial_search()`, which reads the published index JSON and returns a tibble.
+2. `tutorial-template`: the GitHub template repository that `create_tutorial()` copies. Pinned to Quarto 1.x and quarto-live 0.2.x, updated by pull request.
+3. `tutorial-index`: a folder of YAML entries, one per tutorial. A pull request adds or updates an entry. GitHub Actions run the validator on every pull request, rebuild the site nightly, re-check every URL weekly, and mark an entry stale when the URL fails or the last-checked date passes 18 months. The site is a Quarto listing with filters, and it also publishes `index.json`.
+
+A listed tutorial can show a badge that links to its entry. Nothing in the pipeline needs a server or a database, so hosting costs nothing and the whole thing can be forked.
 
 ### Assumptions
 
-<!--
-What assumptions are you making that, if proven false, would invalidate the project?
--->
+- quarto-live stays maintained. It is a Posit project in the r-wasm organisation, released 0.2.0 in May 2026, and it is the base for learnr2 and tutorizeR.
+- Quarto 2, announced in April 2026 with no release date, will break some extensions. The template pins Quarto 1.x and I will test against Quarto 2 pre-releases in milestone 3.
+- Browser tutorials with large packages download tens of megabytes. That is acceptable for a tutorial, and I will document the size of each reference tutorial.
+- Authors will list their tutorials if the cost is one YAML file. I will seed the index with entries for 50 existing tutorials and send each author the pull request for approval.
 
 ### External dependencies
 
-<!--
-What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
--->
+Quarto 1.4 or later, quarto-live, webR, gradethis (GitHub), R-universe for WebAssembly binaries including bioc.r-universe.dev, GitHub Actions and GitHub Pages. yaml, jsonlite, cli and httr2 on the R side. No paid services.

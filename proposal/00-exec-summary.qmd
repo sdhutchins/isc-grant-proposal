@@ -1,6 +1,7 @@
 # Executive Summary
 
-<!--
-This section provides a condensed view of the entire proposal, one page long.
-It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
--->
+R has more teaching material than any learner can find. Tutorials live in package vignettes, personal blogs, Carpentries lessons, learnr galleries and course sites. They share no metadata, there is no place to search across them, and nobody can tell which ones still run. Since 2024 a tutorial can execute R inside the reader's browser through quarto-live and webR, so a static page can teach with live exercises and no server. Authors now solve the same problems one at a time: the GitHub Action, WebAssembly package availability (above all for Bioconductor), metadata, license, and a check that the tutorial still renders.
+
+This project delivers three things. A template repository that publishes a quarto-live tutorial to GitHub Pages with CRAN and Bioconductor packages resolved through r-universe. A small metadata standard with an R validator, so a tutorial can state which packages it teaches, at what level, for how long, and which R version it was last checked against. An open index site where any R tutorial, on quarto-live, learnr2, learnr, swirl or plain HTML, can be listed by pull request and found by package, level and topic. Three reference tutorials exercise the template: an introductory R lesson adapted from Software Carpentry, a DESeq2 companion to the Bioconductor bioc-rnaseq lesson, and package development with usethis and devtools.
+
+I maintain a Software Carpentry adaptation with 14 lessons and slides (r-for-beginners) and have written Quarto tutorials for three of my own packages. I ask for 10,000 USD over eight months in three milestones: template and validator, index site and reference tutorials, then seeding the index and documentation.

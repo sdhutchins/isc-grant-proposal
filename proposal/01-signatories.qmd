@@ -1,32 +1,17 @@
 # Signatories
-<!--
-This section provides the ISC with a view of the support received from
-the community for a proposal. Acceptance isn't predicated on
-popularity but community acceptance is important. Willingness to
-accept outside input is also a good marker for project delivery.
-
-An optional section would be for R-Core signatories where changes to R
-are proposed.
--->
 
 ## Project team
-<!--
-Who are the people responsible for actually delivering the project if
-the proposal gets accepted and are already signed up and rearing to
-go? Briefly describe all participants and the skills they will bring
-to the project. Include public artifacts such as code repositories to
-show their tack record.
--->
 
-## Contributors
-<!--
-Who are the people who have actively helped with this proposal but
-won't necessarily be on the core project team later?
--->
+Samuel Bharti, doctoral researcher at the University of Alabama at Birmingham, leads the work. I build R packages and Shiny applications for omics data, teach R to biologists, and worked before at Posit and at Genentech. Relevant public work:
+
+- r-for-beginners (<https://github.com/samuelbharti/r-for-beginners>): Software Carpentry's r-novice-gapminder lesson rebuilt as 14 focused lessons with slides, published as a Quarto site with a Zenodo DOI.
+- bioclients, biohttp and biobouncer: three R packages on CRAN and r-universe with Quarto tutorials and slide decks written for a workshop.
+- Every package I maintain publishes its documentation through GitHub Actions to GitHub Pages, which is the wiring this project packages for tutorial authors.
+
+I commit 200 hours over eight months.
+
+Shaurita D. Hutchins, PhD candidate in genetics, genomics and bioinformatics at the University of Alabama at Birmingham, co-leads the project. [TODO: one or two lines on what Shaurita brings, with links, and her hours. If those hours are paid from the grant, change the budget table so the total stays at or below 10,000 USD.]
 
 ## Consulted
-<!--
-Who has been given the opportunity to provide feedback on the
-proposal?
--->
 
+[TODO before submission: list only people who received this proposal and replied, with their affiliation and one line on what they said. Suggested: the Bioconductor Training Committee (chairs Charlotte Soneson and Jenny Drnevich) on the DESeq2 companion and on listing their lessons; George Stagg (quarto-live) on the template; David Kane (learnr2) and Aurelien Nicosia (tutorizeR) on metadata their tools can emit; the Carpentries Workbench team on linking lessons; Andrew Heiss on listing the R Primers. If nobody replied in time, delete this section.]
