@@ -6,7 +6,9 @@ The five milestones follow a tutorial from description through checking, discove
 
 We will begin with eight required fields: identifier, title, source URL, lesson URL, engine or format, maintainer, license, and learning objectives. We will map these fields to Schema.org and the Bioschemas TrainingMaterial profile where applicable. Topic, level, prerequisites, packages, deployment mode, duration, accessibility information, and software versions will be optional in the initial schema. Optional review references and DOIs will identify external reviews and publications. The checking tools will generate validation dates and results.
 
-Authors will reuse metadata from their tutorial sources and supply missing fields in a small accompanying file, without rewriting lessons. Missing values will be explicit. An adapter can run a check only when its required fields are supplied or reliably inferred. Nominations with unknown maintainers or licenses will remain pending review.
+To reduce manual work, we will evaluate drafting metadata from existing tutorial sources. Suggested topics, prerequisites, learning objectives, and difficulty will require human confirmation before publication. Records will distinguish author-supplied values, mechanically extracted information, and inferred suggestions, with review status recorded separately. Parsing, heuristics, or AI may assist drafting; the registry pilot will measure whether it reduces author effort.
+
+Authors will supply missing fields in a small accompanying file without rewriting lessons. Unknown values will remain explicit, and nominations with unknown maintainers or licenses will remain pending review. Adapters will run checks only when the required information is available; unconfirmed suggestions will not establish prerequisites for a check.
 
 We will align the prototype with this draft and invite engine maintainers and educators to review it. Their feedback and the pilot's measures of author effort will guide revisions before we publish version 1.0 with example records and adoption guidance.
 
@@ -20,7 +22,7 @@ Adapters may invoke an engine's existing build or checking tools; the engine rem
 
 `check_tutorial()` already combines metadata, URL, and optional rendering checks using four statuses: `pass`, `fail`, `not_run`, and `unsupported`. Grant work will add deeper engine-specific checks of required files, declared dependencies, package versions, interactive execution, and exercise identifiers where supported. Basic automated accessibility checks will accompany manual keyboard checks. Reports will distinguish observed results from declared accessibility information.
 
-Reports will identify failing fields or exercises and record the test environment, source version, and date. For every engine, they will distinguish unsupported or unrun checks from passes and failures. Interactive exercises must be tested directly: a reachable page, a successful render, or precomputed output is not enough. Automated checks alone will not establish teaching quality or full accessibility.
+We will automate reproducible checks and investigate browser tests of representative exercises and assessments. Successful rendering will remain distinct from evidence that interactive behavior works. Reports will identify failing fields or exercises and record the test environment, source version, and date. Automated checks alone will not establish teaching quality or full accessibility.
 
 We will publish a reusable GitHub Actions workflow and integration guidance so authors can run checks in their own repositories without joining the registry. CI will test the package on Linux, macOS, and Windows, using examples with known faults to verify that the checks detect problems. Documented real renders currently cover macOS only.
 
