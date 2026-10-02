@@ -12,7 +12,9 @@ The requested budget is **USD 10,000**, covering 200 hours at USD 50/hour across
 
 ## Preliminary work
 
-The [tutorialverse prototype](https://github.com/tutorial-verse/tutorialverse) reads YAML metadata and returns structured validation results. Its local tests use synthetic records with learnr, learnr2, and Quarto Live identifiers. It does not contact tutorial URLs, render lessons, or execute exercises; adapters and real-tutorial indexing remain proposed work.
+The [tutorialverse prototype](https://github.com/tutorial-verse/tutorialverse/tree/feat/engine-adapters-and-checks) validates YAML metadata, checks source and lesson URLs, and optionally renders trusted local tutorials through learnr, learnr2, and Quarto Live adapters. `check_tutorial()` reports metadata, URL reachability, rendering, execution, and accessibility separately, using `pass`, `fail`, `not_run`, and `unsupported`.
+
+The [adapter review](https://github.com/tutorial-verse/tutorialverse/blob/3384ae6fd31f2f4d4538ced5cd9f02dc6aaa2216/prototype/adapter-review.md) documents successful renders of one public tutorial per engine on macOS. Interactive execution and accessibility remain unsupported. Format detection alone cannot always distinguish learnr2 from Quarto Live. Cross-platform CI, curated registry records, and author-effort measurements remain proposed work.
 
 Public outreach is documented in `proposal/01-signatories.qmd`. An initial community response pointed to `learnr2` and Quarto Live; it does not establish maintainer support for a shared schema.
 
@@ -20,7 +22,7 @@ Public outreach is documented in `proposal/01-signatories.qmd`. An initial commu
 
 - Seek engine-maintainer and educator feedback on the minimal schema and supported checks.
 - Align the prototype fields with the proposed schema: the prototype currently requires topics, while the proposal requires learning objectives and makes topics optional.
-- Use the funded indexing pilot to test 5–10 existing tutorials and record missing metadata and author effort. Record exercise execution separately.
+- Add Linux, macOS, and Windows CI and use the funded indexing pilot to create 5–10 real registry records. Record reused, manually supplied, and unknown fields alongside author effort; keep exercise execution separate from rendering.
 - Confirm the start date and package-name availability, and update the preliminary-work section and baseline counts as work is completed.
 
 ## Deadline and submission

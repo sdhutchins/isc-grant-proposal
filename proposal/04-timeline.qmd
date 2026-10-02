@@ -2,14 +2,14 @@
 
 ## Preliminary work
 
-The [tutorialverse prototype](https://github.com/tutorial-verse/tutorialverse) reads YAML metadata and checks required fields, field types, engine identifiers, URL syntax, and duplicate IDs when other record IDs are supplied. It returns structured pass/fail results and field-level issues. Local tests pass using synthetic records, including records labeled learnr, learnr2, and Quarto Live. The prototype does not contact lesson URLs, render tutorials, or run exercises. Engine integration and indexing real tutorials remain proposed work. Our review of existing tools and [community feedback](https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742) informed this scope.
+We have implemented an initial tutorialverse prototype supporting learnr, learnr2, and Quarto Live. The package validates common tutorial metadata, checks source and published URLs, and uses engine adapters to render trusted local tutorials while producing a common validation report. The [adapter review](https://github.com/tutorial-verse/tutorialverse/blob/3384ae6fd31f2f4d4538ced5cd9f02dc6aaa2216/prototype/adapter-review.md) documents successful renders of one public tutorial per engine on macOS. Interactive exercise execution and accessibility remain explicitly unsupported rather than being inferred from successful rendering. Cross-platform CI, curated registry records, and measurements of author effort remain proposed work.
 
 ## Schedule and working practices
 
 | Period | Work and completion criteria |
 |----------|----------------------------------------|
 | Months 1–2 | Review the eight-field schema, map metadata from existing tutorials into pilot records, establish repositories and governance, and begin the example tutorials. |
-| Months 3–5 | Implement the three adapters and `check_tutorial()`. Publish a capability table and common report format. Test valid examples and known failures. |
+| Months 3–5 | Harden the three adapters and extend `check_tutorial()`. Publish a capability table and common report format. Test valid examples and known failures in Linux, macOS, and Windows CI. |
 | Months 6–8 | Build registry ingestion and search. Publish `index.json` and the R search interface. Run the pilot records through the package and document author effort. |
 | Months 9–10 | Pilot nominations and human review with external contributors. Test stale-entry handling and gather usability feedback. |
 | Months 11–12 | Complete example tutorial and integration-template checks. Address high-priority feedback and release version 1.0 of the package, specification, and registry with maintenance guidance. |
@@ -35,7 +35,7 @@ If funding is reduced, the schema and validation tools can be used independently
 
 ## Risks and maintenance
 
-Adoption is the main uncertainty. Authors may find the schema burdensome if it duplicates metadata they already maintain. We will reuse existing metadata and use early consultation and the indexing pilot to measure author effort, then revise the requirements before finalizing version 1.0.
+The prototype demonstrates the adapter model; adoption remains the main uncertainty. Authors may find the schema burdensome if it duplicates metadata they already maintain. The next experiment is the 5–10-tutorial registry pilot: we will record which fields are reused, supplied manually, or unknown, and measure author effort. These findings and early consultation will guide revisions before version 1.0.
 
 Engine changes could break adapters or expose differences in test coverage. We will document supported versions and browser or server requirements, and use the example tutorials to detect regressions.
 
