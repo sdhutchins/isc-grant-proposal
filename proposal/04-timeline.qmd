@@ -8,35 +8,33 @@ We have implemented an initial tutorialverse prototype supporting learnr, learnr
 
 | Period | Work and completion criteria |
 |----------|----------------------------------------|
-| Months 1–2 | Review the eight-field schema, map metadata from existing tutorials into pilot records, establish repositories and governance, and begin the example tutorials. |
+| Months 1–2 | Review the eight-field profile, map metadata from existing tutorials into pilot records, establish repositories and governance, and begin the reference fixtures. |
 | Months 3–5 | Harden the three adapters and extend `check_tutorial()`. Publish a capability table and common report format. Test valid examples and known failures in Linux, macOS, and Windows CI. |
 | Months 6–8 | Build registry ingestion and search. Publish `index.json` and the R search interface. Run the pilot records through the package and document author effort. |
 | Months 9–10 | Pilot nominations and human review with external contributors. Test stale-entry handling and gather usability feedback. |
-| Months 11–12 | Complete example tutorial and integration-template checks. Address high-priority feedback and release version 1.0 of the package, specification, and registry with maintenance guidance. |
+| Months 11–12 | Expand the registry to approximately 15 tutorials. Complete reference-fixture and integration-template checks. Address high-priority feedback and release version 1.0 of the package, specification, and registry with maintenance guidance. |
 
-We will work openly on GitHub, using issues and milestones to track progress and pull requests for code review. We will publish monthly updates and milestone reports and invite community feedback. Package tests will use testthat, with renv to reproduce software environments. We will publish documentation with pkgdown and distribute the package through R-universe where appropriate.
-
-Code will use the MIT license. Newly authored content and documentation will use CC BY 4.0 where compatible with source obligations; adaptations will retain required attribution and licensing. We will share release announcements and integration guidance with R education communities.
+Development will occur openly on GitHub with pull-request review, automated testing, documented releases, and community updates. Code will use MIT; new educational content will use CC BY 4.0 where source licenses permit.
 
 ## Budget and funding
 
-**Requested budget: USD 10,000.** This funds 200 hours at USD 50/hour, allocated 60% to project lead Hutchins (120 hours; USD 6,000) and 40% to Bharti (80 hours; USD 4,000). No hardware, cloud, travel, or fee costs are included.
+**Requested budget: USD 10,000**, for development, documentation, and review across the five milestones. No hardware, cloud, travel, or fee costs are included.
 
-| Milestone | Hutchins (h) | Bharti (h) | Total (h) | USD |
-|---------------------------|------------:|----------:|----------:|----------:|
-| Minimal schema | 18 | 12 | 30 | 1,500 |
-| Adapters | 30 | 20 | 50 | 2,500 |
-| Validation package | 33 | 22 | 55 | 2,750 |
-| Registry | 21 | 14 | 35 | 1,750 |
-| Review, governance, and examples | 18 | 12 | 30 | 1,500 |
-| Total | 120 | 80 | 200 | 10,000 |
+| Milestone | USD |
+|-------------------------------------------|------:|
+| Minimal metadata profile | 1,500 |
+| Engine adapters | 2,500 |
+| Validation package | 2,750 |
+| Tutorial registry | 1,750 |
+| Review, governance, and reference fixtures | 1,500 |
+| Total | 10,000 |
 
-If funding is reduced, the schema and validation tools can be used independently of the registry.
+If funding is reduced, the profile and validation tools can be used independently of the registry.
 
 ## Risks and maintenance
 
-The prototype demonstrates the adapter model; adoption remains the main uncertainty. Authors may find the schema burdensome if it duplicates metadata they already maintain. The next experiment is the 5–10-tutorial registry pilot: we will record which fields are reused, supplied manually, or unknown, and measure author effort. These findings and early consultation will guide revisions before version 1.0.
+The prototype demonstrates the adapter model; adoption remains the main uncertainty. Authors may find the profile burdensome if it duplicates metadata they already maintain. The next experiment is the 5–10-tutorial registry pilot: we will record which fields are reused, supplied manually, or unknown, and measure author effort. These findings and early consultation will guide revisions before version 1.0.
 
-Engine changes could break adapters or expose differences in test coverage. We will document supported versions and browser or server requirements, and use the example tutorials to detect regressions.
+Engine changes could break adapters or expose differences in test coverage. We will document supported versions and browser or server requirements, and use the reference fixtures to detect regressions.
 
 We will document contribution and governance procedures so others can maintain the registry without relying on us for every change. Entries will name maintainers and retain source links, validation dates, and status. Scheduled checks and an archival policy will help contributors address stale resources.

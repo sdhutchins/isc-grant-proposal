@@ -1,7 +1,7 @@
 # Success
 
-Completion requires version 1.0 of the metadata schema, R package, and searchable registry. Deliverables will include three hardened adapters tested in Linux, macOS, and Windows CI; 5–10 indexed tutorials; and four example tutorials tested in CI, collectively covering all three adapters. We will publish three or four integration templates and at least one reusable validation workflow.
+Completion requires version 1.0 of the metadata profile, R package, and searchable registry. Deliverables will include three hardened adapters tested in Linux, macOS, and Windows CI; approximately 15 indexed tutorials; and four reference fixtures tested in CI, collectively covering all three adapters. We will publish three or four integration templates and at least one reusable validation workflow.
 
-At least three external contributors will review the schema, adapters, or tutorials. The registry pilot will test nomination, review, and stale-entry procedures. We will document check results and reviewer feedback, track external submissions, and measure author effort, including whether assisted metadata drafting reduces manual work.
+At least three external contributors will review the profile, adapters, or tutorials. The registry pilot will test nomination, review, and stale-entry procedures. We will document check results and reviewer feedback, track external submissions, and measure author effort, including whether assisted metadata drafting reduces manual work.
 
-Future work could support additional engines and educational-catalog integrations. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the funded scope.
+Future work could support additional engines and educational-catalog integrations. tutorialverse may provide scaffolding to help authors adapt existing vignettes, articles, or lessons into supported tutorial formats, but automatic conversion of educational content is outside the initial funded scope. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the funded scope.

@@ -6,10 +6,10 @@ The tools used to build a lesson also affect how it runs. learnr runs tutorials 
 
 ## Evidence of need and prior work
 
-Developing Quarto exercises, @handel2025 compared learnr, webexercises, checkdown, exams, quarto-webr, and quarto-live for hosting, maintenance, and exercise support. [Kranz's comparison of RTutor and learnr](https://skranz.github.io/r/2019/04/29/RTutor_vs_Learnr.html) documents similar tradeoffs in 2019, before webR. Reports from the learnr community illustrate practical challenges with [custom Shiny questions](https://github.com/rstudio/learnr/discussions/719) and [Python exercises that work locally but fail after deployment](https://github.com/rstudio/learnr/issues/821), without establishing their prevalence.
+Developing Quarto exercises, @handel2025 compared learnr, webexercises, checkdown, exams, quarto-webr, and quarto-live for hosting, maintenance, and exercise support.
 
 Discovery initiatives address another part of the problem. [rstats-ed](https://github.com/rstudio-education/rstats-ed) compiled a community-curated list of R learning materials, acknowledging its incomplete coverage. Glittr.org supports discovery and comparison of teaching repositories but excludes educational-quality evaluation [@vangeest2024]. TeSS aggregates training metadata, while Bioschemas standardizes resource descriptions [@garcia2020; @castro2023].
 
-The Galaxy Training Network combines automated checks with community review and maintenance [@hiltemann2023]. The [Journal of Open Source Education (JOSE)](https://jose.theoj.org/about) provides formal peer review for reusable educational materials and software. tutorialverse can record this external review alongside its technical checks.
+The Galaxy Training Network combines automated checks with community review and maintenance [@hiltemann2023]. The [Journal of Open Source Education (JOSE)](https://jose.theoj.org/about) provides formal peer review for reusable educational materials and software [@joseabout]. tutorialverse can record this external review alongside its technical checks.
 
 tutorialverse will connect these approaches across R tutorial engines through shared descriptions, validation reports, and review and maintenance records. Existing engines will execute tutorials. New engines, browser runtimes, and learning-management systems remain outside scope; static hosting is a deployment mode to describe and check.
