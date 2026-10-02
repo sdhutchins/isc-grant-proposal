@@ -1,6 +1,6 @@
 # Signatories and community support
 
-Shaurita D. Hutchins will lead the project in collaboration with Samuel Bharti. Both are PhD candidates at the University of Alabama at Birmingham.
+[Shaurita D. Hutchins](https://github.com/sdhutchins) will lead the project in collaboration with [Samuel Bharti](https://github.com/samuelbharti). Both are PhD candidates at the University of Alabama at Birmingham.
 
 **Hutchins will lead educational design and community development.** She will develop the metadata profile, coordinate reference fixtures, and establish accessibility and contribution guidance. She brings experience in Carpentries instruction, reproducible R/Bioconductor workflows, and [browser-based educational modules](https://cfdetrainingcenter.github.io/candidate-genetic-variants/).
 
