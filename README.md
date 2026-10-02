@@ -8,7 +8,7 @@ The 12-month project will deliver a minimal metadata schema and an R validation 
 
 Existing engines will run the tutorials. Browser runtimes, new execution engines, and static-hosting infrastructure are outside the funded scope. Four small reference tutorials will test the adapters across different teaching contexts: `renv`, package development with `usethis` and `devtools`, `DESeq2`, and an introductory Carpentries R lesson.
 
-The requested budget is **USD 10,000**, covering 200 hours at USD 50/hour across five milestones: 80 hours for Hutchins and 120 for Bharti. The indexing pilot will cover 5–10 existing tutorials, and at least three external contributors will review the work during the grant.
+The requested budget is **USD 10,000**, covering 200 hours at USD 50/hour across five milestones: 100 hours and USD 5,000 each for Hutchins and Bharti. The indexing pilot will cover 5–10 existing tutorials, and at least three external contributors will review the work during the grant.
 
 ## Evidence needed before submission
 
