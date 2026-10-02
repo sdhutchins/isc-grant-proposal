@@ -2,16 +2,12 @@
 
 ## Project team
 
-Samuel Bharti, doctoral researcher at the University of Alabama at Birmingham, leads the work. I build R packages and Shiny applications for omics data, teach R to biologists, and worked before at Posit and at Genentech. Relevant public work:
+Shaurita D. Hutchins leads the project. I am a PhD candidate in genetics, genomics and bioinformatics at the University of Alabama at Birmingham, in the Worthey lab at the Center for Computational Genomics and Data Science, which interprets variants for rare and undiagnosed disease. I organise the Birmingham (Alabama) R Users Group. On this project I own the requirements and the design of the variant table, test every release on real case reviews, write the rare disease vignette, and run dissemination. [TODO: one line of public work with links.]
 
-- r-for-beginners (<https://github.com/samuelbharti/r-for-beginners>): Software Carpentry's r-novice-gapminder lesson rebuilt as 14 focused lessons with slides, published as a Quarto site with a Zenodo DOI.
-- bioclients, biohttp and biobouncer: three R packages on CRAN and r-universe with Quarto tutorials and slide decks written for a workshop.
-- Every package I maintain publishes its documentation through GitHub Actions to GitHub Pages, which is the wiring this project packages for tutorial authors.
+## Contributors
 
-I commit 200 hours over eight months.
-
-Shaurita D. Hutchins, PhD candidate in genetics, genomics and bioinformatics at the University of Alabama at Birmingham, co-leads the project. [TODO: one or two lines on what Shaurita brings, with links, and her hours. If those hours are paid from the grant, change the budget table so the total stays at or below 10,000 USD.]
+Samuel Bharti, doctoral researcher at the University of Alabama at Birmingham, contributes package development. He maintains the three packages tidyvar builds on: bioclients (<https://github.com/samuelbharti/bioclients>, r-universe), clients for gnomAD, ClinVar, Ensembl, UniProt and 25 other services with one row per input and envelope results instead of errors; biohttp (CRAN), the HTTP layer under it with cache, circuit breaker, rate limiting and batching; and biobouncer (CRAN and PyPI), validation of gene symbols, ontology terms and variant notation. His variant-reviewer Shiny app (<https://github.com/samuelbharti/variant-reviewer>), which reviews one variant across ClinVar, gnomAD, Ensembl and Open Targets, is where the joining and bookkeeping problem became concrete.
 
 ## Consulted
 
-[TODO before submission: list only people who received this proposal and replied, with their affiliation and one line on what they said. Suggested: the Bioconductor Training Committee (chairs Charlotte Soneson and Jenny Drnevich) on the DESeq2 companion and on listing their lessons; George Stagg (quarto-live) on the template; David Kane (learnr2) and Aurelien Nicosia (tutorizeR) on metadata their tools can emit; the Carpentries Workbench team on linking lessons; Andrew Heiss on listing the R Primers. If nobody replied in time, delete this section.]
+[TODO before submission: list only people who received this proposal and replied, with affiliation and one line on what they said. Suggested: Elizabeth Worthey, the lead's advisor, as supporter and first user; tidyomics maintainers (Stefano Mangiola, Michael Love) on the table design; VariantAnnotation maintainers at Bioconductor core on VRanges round-tripping; the GA4GH Genomic Knowledge Standards work stream on VRS test data. If nobody replied in time, delete this section.]

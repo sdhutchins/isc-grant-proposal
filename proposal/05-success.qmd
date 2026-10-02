@@ -2,21 +2,17 @@
 
 ## Definition of done
 
-- `tutorialindex` installs from r-universe with R CMD check clean on Linux, macOS and Windows, and is submitted to CRAN.
-- `create_tutorial()` produces a repository that publishes to GitHub Pages on first push.
-- The DESeq2 reference tutorial runs its exercises in the browser in Chrome, Firefox and Safari.
-- The index site lists at least 50 validated entries, including the three reference tutorials, with search by package, level and topic, and publishes `index.json`.
-- At least five tutorials by other authors use the template.
+- tidyvar 0.2 installs from r-universe on Linux, macOS and Windows with R CMD check clean.
+- `vrs_id()` matches the specification's test data for Alleles and the `VRS_Allele_IDs` field of gnomAD v4 on a sample of 1,000 variants.
+- A VCF read with `read_variants()` converts to VRanges and back with no lost records or fields.
+- Six adapters work, each with recorded-response tests, and every column they add carries provenance.
+- One real rare disease case review in the lead's lab has run on tidyvar with provenance recorded for every annotation.
+- Two vignettes run in CI without network access, and the Bioconductor submission is open.
 
 ## Measuring success
 
-During the grant: pull requests to the index from people other than me, template repositories created (GitHub counts them), and comments on the schema discussion. After the grant: entries per month, unique packages covered, the share of entries that pass the weekly link check, and whether R-universe, pkgdown or the Bioconductor Training Committee link to entries. The number I care about most is packages covered, because it shows where teaching material is missing.
+During the grant: test coverage above 85 percent, monthly progress notes, and issues opened by people other than us. After the grant: downloads from r-universe and later Bioconductor, adapters contributed by others, a listing by the tidyomics project, the lab using tidyvar as the default for case reviews, and variant-reviewer running on it instead of its own glue code.
 
 ## Future work
 
-- An open review track for tutorials that want a badge beyond validation, modelled on the Carpentries Lab and rOpenSci review.
-- An accessibility check in the template's action (contrast, headings, keyboard focus) using an existing tool.
-- Companions for the other Bioconductor Training Committee lessons (bioc-intro, bioc-scrnaseq).
-- A pkgdown and R-universe integration that shows "tutorials for this package" from the index.
-- Translations, using the R Consortium's translation glossary project.
-- Migration guides from learnr to quarto-live with tutorizeR, written with its maintainer.
+Structural variants and copy number through the VRS CopyNumber classes. Adapters for the ClinGen Allele Registry and ProtVar. VRS 2.1 when it stabilises. The same identifier function in Python inside biobouncer. A Bioconductor release, then a request to join the tidyomics ecosystem.

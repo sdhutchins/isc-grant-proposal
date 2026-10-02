@@ -1,5 +1,5 @@
 project:
-  title: "R tutorial index ISC proposal"
+  title: "tidyvar ISC proposal"
   render:
     - "*.qmd"
     - "!proposal/"

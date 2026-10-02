@@ -2,39 +2,48 @@
 
 ## Overview
 
-Three parts fit together. `tutorialindex` is a small R package with a metadata schema, a validator and a scaffolding function. A template repository turns that schema into a publishing pipeline for quarto-live tutorials. An index site lists every tutorial whose metadata passes the validator, with search by package, level and topic. Three reference tutorials prove the pipeline, including one that loads Bioconductor packages in the browser. The working name tutorialindex is free on CRAN. The index accepts tutorials built with any tool: a learnr tutorial on a Shiny server, a swirl course, a Carpentries lesson and a quarto-live page all get an entry, as long as the entry validates.
+tidyvar will be an R package with one data type and a small set of verbs. The data type is a variant table: a tibble subclass with required columns for assembly, chromosome, position, reference and alternate alleles, plus a VRS identifier column. The verbs read a table from VCF, TSV or HGVS strings, normalize it, compute identifiers, annotate it from a named source, and export it. Every column added by an annotation carries provenance. The package sits between VariantAnnotation and the web resources. It does not call variants, does not filter by its own rules, and does not draw plots. It gives existing tools a shared table to pass around.
 
-Benefits to the R community: one searchable place for R tutorials, with machine-readable metadata that R-universe or pkgdown can consume. A publishing template that takes an author from a .qmd file to a live tutorial on GitHub Pages in one afternoon, with Bioconductor packages working. A validator that tells authors what is missing before a human looks at it.
+For the R community this means exact joins across ClinVar, gnomAD, VEP output and local data with no custom string matching, one table shape for dplyr users and Bioconductor users alike, annotation that can be rerun against the same release, a first R implementation of a GA4GH standard tested against the specification's own test data, and an adapter interface that lets anyone add a resource in one file.
 
 ## Detail
 
 ### Minimum Viable Product
 
-At the end of milestone 1:
+Version 0.1, at the end of milestone 1:
 
-- A metadata schema in YAML with these required fields: title, url, authors, license, format (quarto-live, learnr2, learnr, swirl, static), packages taught, level (beginner, intermediate, advanced), estimated minutes, R version last checked, date last checked. Optional fields: prerequisites, topics, language, source repository, and the Carpentries or Bioconductor lesson it accompanies.
-- `tutorialindex::validate_entry()` checks a YAML file against the schema, checks that the URL answers, and checks that every package named exists on CRAN or Bioconductor.
-- `tutorialindex::create_tutorial()` copies the template into a new repository: a Quarto project with the quarto-live extension, a gradethis exercise example, the metadata file, a GitHub Action that renders and publishes to GitHub Pages, and a `repos` setting that adds r-universe so Bioconductor packages load in webR.
+- `variant_table()` builds the table from a data frame and checks the required columns.
+- `read_variants()` reads VCF (through VariantAnnotation), TSV, and vectors of HGVS or SPDI strings (validated by biobouncer).
+- `normalize_variants()` applies VRS fully justified normalization, using the reference sequence from a BSgenome package or the refget API.
+- `vrs_id()` computes the VRS 2.0 identifier for each allele (a SHA-512 digest truncated to 24 bytes, base64url encoded, prefixed with `ga4gh:VA.`). Sequence accessions for GRCh37 and GRCh38 chromosomes ship with the package. Other sequences resolve through refget.
+- `as_vranges()` and `as_variant_table()` convert to and from VRanges without loss.
 
-An author who uses these two functions has a published, listed tutorial without reading a build guide.
+With these five functions a user can read a VCF, compute identifiers, and join it to any resource that publishes them. gnomAD v4 VCF files already carry a `VRS_Allele_IDs` field, so the first exact join needs no API at all.
 
 ### Architecture
 
-Three repositories:
+The variant table is a tibble with a `tidyvar` class and a `provenance` attribute, a list keyed by column name. Each entry records `source`, `source_release`, `retrieved_at`, `query`, and the tidyvar version. `provenance()` returns it as a tibble. Subsetting keeps it, and joins merge it.
 
-1. `tutorialindex` (R package): schema, validator, scaffolding, and `tutorial_search()`, which reads the published index JSON and returns a tibble.
-2. `tutorial-template`: the GitHub template repository that `create_tutorial()` copies. Pinned to Quarto 1.x and quarto-live 0.2.x, updated by pull request.
-3. `tutorial-index`: a folder of YAML entries, one per tutorial. A pull request adds or updates an entry. GitHub Actions run the validator on every pull request, rebuild the site nightly, re-check every URL weekly, and mark an entry stale when the URL fails or the last-checked date passes 18 months. The site is a Quarto listing with filters, and it also publishes `index.json`.
+Annotation runs through one generic, `annotate_variants(x, source, ...)`. An adapter is an S3 method for one source. It calls the resource through bioclients and biohttp and returns new columns plus a provenance entry. Caching, retries and rate limits live in biohttp, so an adapter is about 60 lines. Adapters planned for milestone 2:
 
-A listed tutorial can show a badge that links to its entry. Nothing in the pipeline needs a server or a database, so hosting costs nothing and the whole thing can be forked.
+| Source | Transport | What it adds |
+|---|---|---|
+| ClinVar | E-utilities and MyVariant.info | clinical significance, review status, conditions |
+| gnomAD | GraphQL API for small sets, MafDb packages or v4 VCF for bulk | allele frequency by population, filters |
+| Ensembl VEP | REST endpoint, no local install | consequence, impact, transcript, protein change |
+| MyVariant.info | REST, through myvariant | dbSNP, dbNSFP scores, aggregated fields |
+| UniProt | REST, through bioclients | protein accession, domain at position |
+| Local file | TSV or VCF | the user's own table, joined on VRS id |
+
+`write_variants()` writes TSV and JSON, and `as_vranges()` brings the table back into Bioconductor for writing VCF with VariantAnnotation.
 
 ### Assumptions
 
-- quarto-live stays maintained. It is a Posit project in the r-wasm organisation, released 0.2.0 in May 2026, and it is the base for learnr2 and tutorizeR.
-- Quarto 2, announced in April 2026 with no release date, will break some extensions. The template pins Quarto 1.x and I will test against Quarto 2 pre-releases in milestone 3.
-- Browser tutorials with large packages download tens of megabytes. That is acceptable for a tutorial, and I will document the size of each reference tutorial.
-- Authors will list their tutorials if the cost is one YAML file. I will seed the index with entries for 50 existing tutorials and send each author the pull request for approval.
+- VRS 2.0 stays the stable version through 2027. VRS 2.1 is in draft. We will track it and keep 2.0 identifiers as the default.
+- The public APIs stay available at their current terms. gnomAD asks that bulk annotation use downloaded files, so the gnomAD adapter falls back to the MafDb packages or the v4 VCF for tables with more than a few hundred rows.
+- VRanges round-tripping covers SNVs, indels and MNVs. Structural variants and copy number are out of scope for this grant.
+- 200 hours are enough because the HTTP, validation and client code already exists in three released packages, and the lead's lab supplies real cases for testing.
 
 ### External dependencies
 
-Quarto 1.4 or later, quarto-live, webR, gradethis (GitHub), R-universe for WebAssembly binaries including bioc.r-universe.dev, GitHub Actions and GitHub Pages. yaml, jsonlite, cli and httr2 on the R side. No paid services.
+VariantAnnotation, GenomicRanges, Biostrings and a BSgenome package for GRCh38 (Bioconductor). tibble, dplyr, vctrs and rlang (CRAN). biohttp and biobouncer (CRAN), bioclients (r-universe, CRAN submission planned). openssl for SHA-512, jsonlite for VRS serialization. myvariant (Bioconductor) for one adapter. No cloud services. Continuous integration on GitHub Actions and r-universe, both free.

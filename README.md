@@ -1,18 +1,18 @@
-# ISC proposal: an index, template and validator for browser-run R tutorials
+# ISC proposal: tidyvar, one variant table for R
 
-A proposal to the R Consortium Infrastructure Steering Committee (ISC), 2026 round 2. It asks for 10,000 USD over eight months to build three things:
+A proposal to the R Consortium Infrastructure Steering Committee (ISC), 2026 round 2. It asks for 10,000 USD over eight months to build tidyvar, an R package that gives germline variant tables one shape and one identity:
 
-- `tutorialindex`, a small R package with a metadata schema for tutorials, a validator, and a function that scaffolds a new tutorial.
-- A template repository that publishes a quarto-live tutorial to GitHub Pages, with CRAN and Bioconductor packages loaded in the browser through r-universe.
-- An open index site where any R tutorial can be listed by pull request and found by package, level and topic.
+- A variant table built on tibble that converts to and from the VRanges class in VariantAnnotation.
+- GA4GH Variation Representation Specification (VRS) 2.0 identifiers, so variants join exactly across ClinVar, gnomAD, VEP output and local files. No R implementation of VRS exists today.
+- Adapters that annotate the table from ClinVar, gnomAD, Ensembl VEP, MyVariant.info, UniProt and local files, with provenance (source, release, retrieval time, query) on every column.
 
-Three reference tutorials test the template: an introductory R lesson adapted from Software Carpentry, a DESeq2 companion to the Bioconductor bioc-rnaseq lesson, and package development with usethis and devtools.
+Lead: Shaurita D. Hutchins, Center for Computational Genomics and Data Science, University of Alabama at Birmingham. Contributor: Samuel Bharti.
 
 The source is `isc-proposal.qmd` and the files under `proposal/`. Rendered files are not tracked. Render locally (see Rendering) or download the `isc-proposal` artifact from the latest run of the render workflow under Actions.
 
 ## Deadline and submission
 
-The round closes on 1 October 2026 at 11:59 pm US Eastern. The ISC notifies applicants on 1 November 2026. If the round is missed, the next one opens on 1 April 2027.
+The round closes on 1 October 2026 at 11:59 pm US Eastern. The ISC notifies applicants on 1 November 2026, with acceptance due 1 December 2026. If the round is missed, the next one opens on 1 April 2027.
 
 1. Make sure that every item under Open items is done.
 2. Render the PDF (see Rendering) and read it once. It must stay within 5 pages.
@@ -21,10 +21,11 @@ The round closes on 1 October 2026 at 11:59 pm US Eastern. The ISC notifies appl
 
 ## Open items
 
-- `proposal/01-signatories.qmd`: complete Shaurita's Project team entry (what she brings, links, hours).
-- `proposal/01-signatories.qmd`: fill the Consulted section with people who replied, or delete the section. Do not list anyone who has not answered.
-- `proposal/04-timeline.qmd`: confirm the hours (200) and the rate (50 USD per hour). If a second person is paid from the grant, change the milestone table so the total stays at or below 10,000 USD.
-- The working package name is `tutorialindex`. It was free on CRAN on 26 September 2026. Change it in `proposal/03-proposal.qmd` and `proposal/05-success.qmd` if you pick another name.
+- `proposal/01-signatories.qmd`: add one line of the lead's public work with links.
+- `proposal/01-signatories.qmd`: fill the Consulted section with people who replied, or delete it. A note of support from the Worthey lab is the most useful one to get.
+- `proposal/04-timeline.qmd`: confirm the hours (200) and the rate (50 USD per hour).
+- The working package name is `tidyvar`. It was free on CRAN on 1 October 2026. A GitHub repository named tidyvars (vector autoregression models) exists. The fallback name is `tidyvariants`.
+- After submission, before any review call: compute one VRS identifier in R and show it matches the `VRS_Allele_IDs` field in a gnomAD v4 VCF. Put the snippet in this repository.
 
 ## Rendering
 
@@ -43,7 +44,7 @@ Two GitHub Actions workflows run on push to `main`. `render-proposal.yaml` rende
 |---|---|
 | `isc-proposal.qmd` | Title block and the list of included sections |
 | `proposal/00-exec-summary.qmd` | Executive summary |
-| `proposal/01-signatories.qmd` | Project team and consulted people |
+| `proposal/01-signatories.qmd` | Project team, contributors and consulted people |
 | `proposal/02-problemdefinition.qmd` | The problem and the three gaps |
 | `proposal/03-proposal.qmd` | Overview, minimum viable product, architecture, assumptions, dependencies |
 | `proposal/04-timeline.qmd` | Start-up, milestones, failure modes, dissemination, budget |
@@ -51,4 +52,4 @@ Two GitHub Actions workflows run on push to `main`. `render-proposal.yaml` rende
 | `references.bib` | Citations |
 | `_extensions/` | The hikmah PDF format from the official ISC template |
 
-The template is the official one from <https://github.com/RConsortium/isc-proposal>. The ISC asks for 2 to 5 pages and 500 to 2,500 words, written in the applicants' own voice.
+The template is the official one from <https://github.com/RConsortium/isc-proposal>. The ISC asks for 2 to 5 pages and 500 to 2,500 words, written in the applicant's own voice. The earlier tutorial index proposal is in the history of this repository (pull request 1).
