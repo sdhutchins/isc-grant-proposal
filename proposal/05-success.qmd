@@ -1,22 +1,22 @@
 # Success
-<!--
-Projects should have a definition of done that is measurable, and a
-thorough understanding going in of what the risks are to delivery
--->
 
 ## Definition of done
-<!--
-What does success look like?
--->
+
+- `tutorialindex` installs from r-universe with R CMD check clean on Linux, macOS and Windows, and is submitted to CRAN.
+- `create_tutorial()` produces a repository that publishes to GitHub Pages on first push.
+- The DESeq2 reference tutorial runs its exercises in the browser in Chrome, Firefox and Safari.
+- The index site lists at least 50 validated entries, including the three reference tutorials, with search by package, level and topic, and publishes `index.json`.
+- At least five tutorials by other authors use the template.
 
 ## Measuring success
-<!--
-How will we know when success is achieved, what markers can we use
-along the way
--->
+
+During the grant: pull requests to the index from people other than me, template repositories created (GitHub counts them), and comments on the schema discussion. After the grant: entries per month, unique packages covered, the share of entries that pass the weekly link check, and whether R-universe, pkgdown or the Bioconductor Training Committee link to entries. The number I care about most is packages covered, because it shows where teaching material is missing.
 
 ## Future work
-<!--
-How could this be extended / developed in the future by yourself
-and/or the community in general?
--->
+
+- An open review track for tutorials that want a badge beyond validation, modelled on the Carpentries Lab and rOpenSci review.
+- An accessibility check in the template's action (contrast, headings, keyboard focus) using an existing tool.
+- Companions for the other Bioconductor Training Committee lessons (bioc-intro, bioc-scrnaseq).
+- A pkgdown and R-universe integration that shows "tutorials for this package" from the index.
+- Translations, using the R Consortium's translation glossary project.
+- Migration guides from learnr to quarto-live with tutorizeR, written with its maintainer.

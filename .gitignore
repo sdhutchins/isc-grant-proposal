@@ -18,3 +18,8 @@ vignettes/*.pdf
 *.pdf
 
 /.quarto/
+
+# Local notes and drafts
+docs/local/
+
+**/*.quarto_ipynb

@@ -1,66 +1,54 @@
-# isc-proposal
+# ISC proposal: an index, template and validator for browser-run R tutorials
 
-[![build-status](https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/actions/workflows/publish-proposal.yaml/badge.svg)](https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/actions/workflows/publish-proposal.yaml)
+A proposal to the R Consortium Infrastructure Steering Committee (ISC), 2026 round 2. It asks for 10,000 USD over eight months to build three things:
 
-This repository is a boilerplate repository that helps you prepare your proposal for the [R Consortium](https://www.r-consortium.org).
+- `tutorialindex`, a small R package with a metadata schema for tutorials, a validator, and a function that scaffolds a new tutorial.
+- A template repository that publishes a quarto-live tutorial to GitHub Pages, with CRAN and Bioconductor packages loaded in the browser through r-universe.
+- An open index site where any R tutorial can be listed by pull request and found by package, level and topic.
 
-## Background
+Three reference tutorials test the template: an introductory R lesson adapted from Software Carpentry, a DESeq2 companion to the Bioconductor bioc-rnaseq lesson, and package development with usethis and devtools.
 
-Set up in 2015, the R Consortium is an organisation set up to help support the R Foundation, the R Community, and R users.
+The source is `isc-proposal.qmd` and the files under `proposal/`. Rendered files are not tracked. Render locally (see Rendering) or download the `isc-proposal` artifact from the latest run of the render workflow under Actions.
 
-> The primary purpose of the R Consortium (collectively, the “Purpose”) is to:
->
->(a) advance the worldwide promotion of and support for the R open source language and environment as the preferred language for statistical computing and graphics (the “Environment”);
->
->(b) establish, maintain, seek support for, and develop infrastructure projects and technical and infrastructure collaboration initiatives related to the Environment, and such other initiatives as may be appropriate to support, enable and promote the Environment;
->
->(c) encourage and increase user adoption, involvement with, and contribution to, the Environment;
->
->(d) facilitate communication and collaboration among users and developers of the Environment, the R Consortium and the R Foundation for Statistical Computing (the “R Foundation”);
->
->(e) support and maintain policies set by the Board; and
->
->(f) undertake such other activities as may from time to time be appropriate to further the purposes and achieve the goals set forth above.
->
->In furtherance of these efforts, the R Consortium shall seek to solicit the participation of all interested parties on a fair, equitable and open basis.
+## Deadline and submission
 
-_Source: [R Consortium Bylaws, Section 1.4](https://r-consortium.org/rc-docs/R-Consortium-Bylaws-7-9-2024.pdf)_
+The round closes on 1 October 2026 at 11:59 pm US Eastern. The ISC notifies applicants on 1 November 2026. If the round is missed, the next one opens on 1 April 2027.
 
-Delivery of the technical aspects for R Consortium's projects is overseen by the Infrastructure Steering Committee (ISC). The ISC is set up to receive, select, and manage projects that deliver upon the aims of the Consortium. The ISC will have an ongoing call for proposals and will select proposals to move into project stage approximately every six months. Within the process notes, it does say that if a proposal is unlikely to get funded then the proposers will be notified as soon as possible, partially so that re-submission can happen in the event fixable issues.
+1. Make sure that every item under Open items is done.
+2. Render the PDF (see Rendering) and read it once. It must stay within 5 pages.
+3. Submit the PDF through the form linked from <https://r-consortium.org/all-projects/callforproposals.html> (forms.gle/o1nhNrdzebQc2DNU6).
+4. Keep the thank-you message and the confirmation email.
 
-## Proposals
+## Open items
 
-Here we detail useful guidance notes on making proposals to the ISC but you should always consult the [ISC Grant Program](https://r-consortium.org/all-projects/callforproposals.html) page as there could be updates.
+- `proposal/01-signatories.qmd`: complete Shaurita's Project team entry (what she brings, links, hours).
+- `proposal/01-signatories.qmd`: fill the Consulted section with people who replied, or delete the section. Do not list anyone who has not answered.
+- `proposal/04-timeline.qmd`: confirm the hours (200) and the rate (50 USD per hour). If a second person is paid from the grant, change the milestone table so the total stays at or below 10,000 USD.
+- The working package name is `tutorialindex`. It was free on CRAN on 26 September 2026. Change it in `proposal/03-proposal.qmd` and `proposal/05-success.qmd` if you pick another name.
 
-- Try to complete as many of the sections of this boilerplate document as possible. Each section is included either for practical purposes or has been specifically requested by the ISC.
-- Add relevant additional sections, like the letter of support from an R Core member if you want a change to R itself.
-- Aim for 500-2500 written words. If the proposal is exceptionally long you risk the chance of it not being read thoroughly.
-- You *can* submit a proposal on your own, but it's really recommended to get engagement from the community (and the ISC) first.
-- Proposals should be submitted through the form on the [ISC Grant Program](https://r-consortium.org/all-projects/callforproposals.html) page.
+## Rendering
 
-### Use of AI
+You need Quarto 1.4 or later and a LaTeX install. `quarto install tinytex` gives you one.
 
-We value clarity and authenticity. Please use your own voice to tell your story. While AI tools are welcome for refining your ideas, please prioritize concise, high-impact responses. Avoid lengthy, generic prose; we want to understand the unique heart of your project and why it deserves support.
+```sh
+quarto render isc-proposal.qmd --to hikmah-pdf
+quarto render isc-proposal.qmd --to html
+```
 
-## Making your proposal
+Two GitHub Actions workflows run on push to `main`. `render-proposal.yaml` renders the PDF and the HTML and attaches them to the run as an artifact named `isc-proposal`. `publish-proposal.yaml`, from the template, publishes the HTML to GitHub Pages once someone has run `quarto publish gh-pages isc-proposal.qmd` from a local checkout.
 
-This is a boilerplate repository that you will need to fork, title appropriately and start filling in.
+## Layout
 
--   Use the "Use this template" button on GitHub
--   Create a new repository with a name to reflect your proposal
--   Create a new Positron/RStudio/IDE project from version control and use the git URL for the repo
--   Write an overview of the proposal instead of this boilerplate for the README
--   Start completing the relevant qmd pages of the proposal
--   Render `isc-proposal.qmd` to build the document locally
--   Regularly commit and push the changes to GitHub
--   Solicit feedback and contributions from others
+| Path | Content |
+|---|---|
+| `isc-proposal.qmd` | Title block and the list of included sections |
+| `proposal/00-exec-summary.qmd` | Executive summary |
+| `proposal/01-signatories.qmd` | Project team and consulted people |
+| `proposal/02-problemdefinition.qmd` | The problem and the three gaps |
+| `proposal/03-proposal.qmd` | Overview, minimum viable product, architecture, assumptions, dependencies |
+| `proposal/04-timeline.qmd` | Start-up, milestones, failure modes, dissemination, budget |
+| `proposal/05-success.qmd` | Definition of done, measures, future work |
+| `references.bib` | Citations |
+| `_extensions/` | The hikmah PDF format from the official ISC template |
 
-### Automatically generate your proposal
-
-This repository comes with a GitHub actions setup to automatically render your proposal to HTML and PDF formats.  To take advantage of it, you must publish the proposal to GitHub pages interactively the first time.
-
-From the command line, run `quarto publish gh-pages isc-proposal.qmd`.  After this, the GitHub action should run every time you push a commit to the main branch. Your rendered proposal can then be viewed at https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/
-
-## License
-
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">ISC Boilerplate</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/stephlocke" property="cc:attributionName" rel="cc:attributionURL">Stephanie Locke</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/RConsortium/isc-proposal" rel="dct:source">https://github.com/RConsortium/isc-proposal</a>.
+The template is the official one from <https://github.com/RConsortium/isc-proposal>. The ISC asks for 2 to 5 pages and 500 to 2,500 words, written in the applicants' own voice.
