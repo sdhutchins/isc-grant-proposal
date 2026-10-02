@@ -2246,14 +2246,14 @@ vertical-align: -.125em;
 <h1>Executive summary</h1>
 <p>Instructors and learners choosing an R tutorial often have to inspect its repository to find prerequisites and evidence that the exercises still work. Descriptions differ across formats and may leave maintenance status unclear.</p>
 <p><strong>tutorialverse will help instructors and learners find R tutorials suited to their needs and see the reported prerequisites, check results, and review status.</strong> Authors will describe tutorials with shared metadata. An R package will use adapters to run supported checks through existing engines and produce common reports. A searchable registry will combine descriptions, reports, and human reviews, linking readers to original lessons. Community review and scheduled checks will help keep entries current.</p>
-<p>A <a href="https://github.com/tutorial-verse/tutorialverse">metadata-only prototype</a> already reads YAML records and reports validation failures. It does not yet render tutorials or run exercises.</p>
-<p>Over 12 months, we will develop support for learnr, learnr2, and Quarto Live, index 5–10 existing tutorials, and use four small examples to test the adapters across teaching contexts. Carpentries-style materials will also be indexed, with stated limits on automated checks. Existing tools will provide browser execution and static hosting. We request USD 10,000 for this work.</p>
+<p>An <a href="https://github.com/tutorial-verse/tutorialverse/tree/feat/engine-adapters-and-checks">initial prototype</a> already demonstrates the proposed adapter model across all three engines. Grant work will extend this foundation to curated registry records, CI-based validation, author-effort measurement, and community-reviewed metadata.</p>
+<p>Over 12 months, we will harden and extend support for learnr, learnr2, and Quarto Live, index 5–10 existing tutorials, and use four small examples to test the adapters across teaching contexts. Carpentries-style materials will also be indexed, with stated limits on automated checks. Existing tools will provide browser execution and static hosting. We request USD 10,000 for this work.</p>
 </section>
 <section id="signatories-and-community-support" class="level1">
 <h1>Signatories and community support</h1>
 <p>Shaurita D. Hutchins will lead the project in collaboration with Samuel Bharti. Both are PhD candidates at the University of Alabama at Birmingham.</p>
-<p><strong>Hutchins will lead educational design and community development.</strong> She will develop the metadata schema, coordinate example tutorials, and establish accessibility and contribution guidance. A computational biologist trained in genetics, genomics, and bioinformatics, she brings experience in Carpentries instruction and reproducible R/Bioconductor workflows. She received a grant to develop <a href="https://cfdetrainingcenter.github.io/candidate-genetic-variants/">Prioritizing Candidate Genetic Variants Using GTEx, HuBMAP, and IDG</a> for the Common Fund Data Ecosystem (CFDE) Training Center. Built with Quarto Live, the module combines coding activities that run in the browser with knowledge checks, giving her direct experience developing interactive learning materials.</p>
-<p><strong>Bharti will lead software architecture and engine integration.</strong> He will build adapters that use existing engine checks and produce validation reports in a common format. A former Posit intern, he brings experience developing Shiny applications and R packages, including bioclients, biohttp, and biobouncer. His teaching work includes <a href="https://github.com/samuelbharti/r-for-beginners">r-for-beginners</a>, an adaptation of Software Carpentry lessons with accompanying slides. He also maintains automated workflows for publishing package documentation through GitHub Actions and GitHub Pages. This combination of application development, teaching, and package maintenance will inform the tools and documentation that tutorial authors use.</p>
+<p><strong>Hutchins will lead educational design and community development.</strong> She will develop the metadata schema, coordinate example tutorials, and establish accessibility and contribution guidance. A computational biologist trained in genetics, genomics, and bioinformatics, she brings experience in Carpentries instruction and reproducible R/Bioconductor workflows. She received a grant to develop <a href="https://cfdetrainingcenter.github.io/candidate-genetic-variants/">Prioritizing Candidate Genetic Variants Using GTEx, HuBMAP, and IDG</a> for the Common Fund Data Ecosystem (CFDE) Training Center. Built with Quarto Live, the module combines coding activities that run in the browser with knowledge checks.</p>
+<p><strong>Bharti will lead software architecture and engine integration.</strong> He will harden and extend adapters that use existing engine checks and produce validation reports in a common format. A former Posit intern, he brings experience developing Shiny applications and R packages, including bioclients, biohttp, and biobouncer. His teaching work includes <a href="https://github.com/samuelbharti/r-for-beginners">r-for-beginners</a>, an adaptation of Software Carpentry lessons with accompanying slides. He also maintains automated workflows for publishing package documentation through GitHub Actions and GitHub Pages.</p>
 <p>We will jointly design the package API and registry, and share responsibility for governance and the example tutorials.</p>
 <p>We requested public feedback through <a href="https://www.reddit.com/r/Stats/comments/1wvj3wd/for_people_who_teach_or_learn_r_how_do_you_find/">r/Stats</a> and the <a href="https://github.com/rstudio/learnr/issues/766#issuecomment-5944771998">learnr webR discussion</a>. Community contributor <a href="https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742">@coatless</a> pointed us to learnr2 and Quarto Live. That feedback helped us focus on shared metadata and checks, though the proposed schema still needs review. We will seek engine maintainers’ feedback on the schema and the checks each adapter can support.</p>
 <p>We will also consult Carpentries and Bioconductor educators, along with university and community instructors. We will add documented feedback and letters of support as received.</p>
@@ -2264,11 +2264,10 @@ vertical-align: -.125em;
 <p>The tools used to build a lesson also affect how it runs. learnr runs tutorials as Shiny applications <span class="citation" data-cites="learnr">(<a href="#ref-learnr" role="doc-biblioref">Aden-Buie et al. 2025</a>)</span>. learnr2 builds on Quarto Live, which uses webR to execute R in the browser <span class="citation" data-cites="learnr2 quartolive">(<a href="#ref-learnr2" role="doc-biblioref"><em><span class="nocase">learnr2</span></em>, n.d.</a>; <a href="#ref-quartolive" role="doc-biblioref">Stagg 2026</a>)</span>. tutorialverse will give instructors and learners a common way to compare tutorial descriptions and check results across these engines.</p>
 <section id="evidence-of-need-and-prior-work" class="level2">
 <h2 class="anchored" data-anchor-id="evidence-of-need-and-prior-work">Evidence of need and prior work</h2>
-<p>For his Quarto exercises, <span class="citation" data-cites="handel2025">Handel (<a href="#ref-handel2025" role="doc-biblioref">2025</a>)</span> compared learnr, webexercises, checkdown, exams, quarto-webr, and quarto-live. He assessed hosting and maintenance requirements alongside the supported exercise types. <a href="https://skranz.github.io/r/2019/04/29/RTutor_vs_Learnr.html">Kranz’s 2019 comparison</a> of RTutor and learnr shows that choices about exercise structure, teaching environments, and long-term support predate webR.</p>
-<p>Discussions in the learnr community document difficulties <a href="https://github.com/rstudio/learnr/discussions/719">integrating custom Shiny questions</a> and a report of <a href="https://github.com/rstudio/learnr/issues/821">Python exercises working locally but failing after deployment</a>. These reports illustrate support needs; they do not establish how often tutorials fail.</p>
-<p>The <a href="https://github.com/rstudio-education/rstats-ed">rstats-ed project</a> addressed discovery with a user-curated list of R courses and learning materials, while acknowledging that it could not be comprehensive. Glittr.org helps users find and compare teaching repositories; its 2024 paper explicitly excludes evaluation of their educational quality <span class="citation" data-cites="vangeest2024">(<a href="#ref-vangeest2024" role="doc-biblioref">Geest et al. 2024</a>)</span>.</p>
-<p>TeSS aggregates training metadata, and Bioschemas provides shared descriptions for training resources <span class="citation" data-cites="garcia2020 castro2023">(<a href="#ref-garcia2020" role="doc-biblioref"><span class="nocase">Garcia et al.</span> 2020</a>; <a href="#ref-castro2023" role="doc-biblioref">Castro et al. 2023</a>)</span>. The Galaxy Training Network combines automated checks with community review and ongoing maintenance <span class="citation" data-cites="hiltemann2023">(<a href="#ref-hiltemann2023" role="doc-biblioref"><span class="nocase">Hiltemann et al.</span> 2023</a>)</span>. The <a href="https://jose.theoj.org/about">Journal of Open Source Education (JOSE)</a> provides formal peer review for reusable educational materials and software; tutorialverse can record that review provenance.</p>
-<p>tutorialverse will connect these functions across R tutorial engines, mapping descriptions to existing standards and linking check results with human reviews and maintenance information. Reports will name tested exercises and dependencies and record the environment and date. Existing engines will run tutorials. New engines, browser runtimes, and learning-management systems are outside scope; static hosting remains a deployment mode to describe and check.</p>
+<p>Developing Quarto exercises, <span class="citation" data-cites="handel2025">Handel (<a href="#ref-handel2025" role="doc-biblioref">2025</a>)</span> compared learnr, webexercises, checkdown, exams, quarto-webr, and quarto-live for hosting, maintenance, and exercise support. <a href="https://skranz.github.io/r/2019/04/29/RTutor_vs_Learnr.html">Kranz’s comparison of RTutor and learnr</a> documents similar tradeoffs in 2019, before webR. Reports from the learnr community illustrate practical challenges with <a href="https://github.com/rstudio/learnr/discussions/719">custom Shiny questions</a> and <a href="https://github.com/rstudio/learnr/issues/821">Python exercises that work locally but fail after deployment</a>, without establishing their prevalence.</p>
+<p>Discovery initiatives address another part of the problem. <a href="https://github.com/rstudio-education/rstats-ed">rstats-ed</a> compiled a community-curated list of R learning materials, acknowledging its incomplete coverage. Glittr.org supports discovery and comparison of teaching repositories but excludes educational-quality evaluation <span class="citation" data-cites="vangeest2024">(<a href="#ref-vangeest2024" role="doc-biblioref">Geest et al. 2024</a>)</span>. TeSS aggregates training metadata, while Bioschemas standardizes resource descriptions <span class="citation" data-cites="garcia2020 castro2023">(<a href="#ref-garcia2020" role="doc-biblioref"><span class="nocase">Garcia et al.</span> 2020</a>; <a href="#ref-castro2023" role="doc-biblioref">Castro et al. 2023</a>)</span>.</p>
+<p>The Galaxy Training Network combines automated checks with community review and maintenance <span class="citation" data-cites="hiltemann2023">(<a href="#ref-hiltemann2023" role="doc-biblioref"><span class="nocase">Hiltemann et al.</span> 2023</a>)</span>. The <a href="https://jose.theoj.org/about">Journal of Open Source Education (JOSE)</a> provides formal peer review for reusable educational materials and software. tutorialverse can record this external review alongside its technical checks.</p>
+<p>tutorialverse will connect these approaches across R tutorial engines through shared descriptions, validation reports, and review and maintenance records. Existing engines will execute tutorials. New engines, browser runtimes, and learning-management systems remain outside scope; static hosting is a deployment mode to describe and check.</p>
 </section>
 </section>
 <section id="proposal" class="level1">
@@ -2277,19 +2276,20 @@ vertical-align: -.125em;
 <section id="milestone-1-a-minimal-metadata-schema" class="level2">
 <h2 class="anchored" data-anchor-id="milestone-1-a-minimal-metadata-schema">Milestone 1: A minimal metadata schema</h2>
 <p>We will begin with eight required fields: identifier, title, source URL, lesson URL, engine or format, maintainer, license, and learning objectives. We will map these fields to Schema.org and the Bioschemas TrainingMaterial profile where applicable. Topic, level, prerequisites, packages, deployment mode, duration, accessibility information, and software versions will be optional in the initial schema. Optional review references and DOIs will identify external reviews and publications. The checking tools will generate validation dates and results.</p>
-<p>Authors will reuse metadata from their tutorial sources and supply missing fields in a small accompanying file, without rewriting lessons. Missing values will be explicit. An adapter can run a check only when its required fields are supplied or reliably inferred. Nominations with unknown maintainers or licenses will remain pending review.</p>
+<p>To reduce manual work, we will evaluate drafting metadata from existing tutorial sources. Suggested topics, prerequisites, learning objectives, and difficulty will require human confirmation before publication. Records will distinguish author-supplied values, mechanically extracted information, and inferred suggestions, with review status recorded separately. Parsing, heuristics, or AI may assist drafting; the registry pilot will measure whether it reduces author effort.</p>
+<p>Authors will supply missing fields in a small accompanying file without rewriting lessons. Unknown values will remain explicit, and nominations with unknown maintainers or licenses will remain pending review. Adapters will run checks only when the required information is available; unconfirmed suggestions will not establish prerequisites for a check.</p>
 <p>We will align the prototype with this draft and invite engine maintainers and educators to review it. Their feedback and the pilot’s measures of author effort will guide revisions before we publish version 1.0 with example records and adoption guidance.</p>
 </section>
-<section id="milestone-2-adapters-for-existing-engines" class="level2">
-<h2 class="anchored" data-anchor-id="milestone-2-adapters-for-existing-engines">Milestone 2: Adapters for existing engines</h2>
-<p>Adapters will connect existing engines to tutorialverse by translating their metadata and check results into a shared format. Proposed interfaces include <code>learnr_adapter()</code>, <code>learnr2_adapter()</code>, and <code>quarto_adapter()</code>, with Quarto Live support in the Quarto adapter. We will refine these interfaces with maintainers and document supported versions and features.</p>
+<section id="milestone-2-harden-and-extend-engine-adapters" class="level2">
+<h2 class="anchored" data-anchor-id="milestone-2-harden-and-extend-engine-adapters">Milestone 2: Harden and extend engine adapters</h2>
+<p>The prototype implements <code>learnr_adapter()</code>, <code>learnr2_adapter()</code>, and <code>quarto_live_adapter()</code>, producing a common report through <code>check_tutorial()</code>. We will harden and extend these adapters, refine their interfaces with maintainers, and document supported versions and features. Because learnr2 and Quarto Live share formats, format detection alone cannot always distinguish them.</p>
 <p>Adapters may invoke an engine’s existing build or checking tools; the engine remains responsible for execution. Conversion between engines is outside the adapters’ scope. A capability table will show each adapter’s support for metadata import, rendering checks, code execution, and accessibility checks. Engines can support different checks while reporting results in the same format. Carpentries-style materials can be indexed after metadata and link checks. Further checks will depend on the lesson’s build system, with those limits stated in the registry.</p>
 </section>
 <section id="milestone-3-validation-across-engines" class="level2">
 <h2 class="anchored" data-anchor-id="milestone-3-validation-across-engines">Milestone 3: Validation across engines</h2>
-<p><code>check_tutorial()</code> will combine common checks with the selected adapter. It will check metadata, links, and required files, then assess declared dependencies and package versions. When supported by the engine, the adapter will test rendering and code execution, and identify missing or duplicate exercise identifiers. Basic automated accessibility checks will accompany manual keyboard checks. Reports will distinguish observed results from declared accessibility information.</p>
-<p>Reports will identify failing fields or exercises and record the test environment, source version, and date. For every engine, they will distinguish unsupported or unrun checks from passes and failures. Interactive exercises must be tested directly: a reachable page, a successful render, or precomputed output is not enough. Automated checks alone will not establish teaching quality or full accessibility.</p>
-<p>We will publish a reusable GitHub Actions workflow and integration guidance so authors can run checks in their own repositories without joining the registry. We will test the package on Linux, macOS, and Windows, using examples with known faults to verify that the checks detect problems.</p>
+<p><code>check_tutorial()</code> already combines metadata, URL, and optional rendering checks using four statuses: <code>pass</code>, <code>fail</code>, <code>not_run</code>, and <code>unsupported</code>. Grant work will add deeper engine-specific checks of required files, declared dependencies, package versions, interactive execution, and exercise identifiers where supported. Basic automated accessibility checks will accompany manual keyboard checks. Reports will distinguish observed results from declared accessibility information.</p>
+<p>We will automate reproducible checks and investigate browser tests of representative exercises and assessments. Successful rendering will remain distinct from evidence that interactive behavior works. Reports will identify failing fields or exercises and record the test environment, source version, and date. Automated checks alone will not establish teaching quality or full accessibility.</p>
+<p>We will publish a reusable GitHub Actions workflow and integration guidance so authors can run checks in their own repositories without joining the registry. CI will test the package on Linux, macOS, and Windows, using examples with known faults to verify that the checks detect problems. Documented real renders currently cover macOS only.</p>
 </section>
 <section id="milestone-4-a-searchable-tutorial-registry" class="level2">
 <h2 class="anchored" data-anchor-id="milestone-4-a-searchable-tutorial-registry">Milestone 4: A searchable tutorial registry</h2>
@@ -2299,7 +2299,7 @@ vertical-align: -.125em;
 </section>
 <section id="milestone-5-review-governance-and-example-tutorials" class="level2">
 <h2 class="anchored" data-anchor-id="milestone-5-review-governance-and-example-tutorials">Milestone 5: Review, governance, and example tutorials</h2>
-<p>Authors will submit entries through structured pull requests; others can nominate tutorials. Automated checks will precede registry review of metadata completeness, scope, licensing, maintenance information, and declared accessibility characteristics. Review procedures will draw on open lesson-review practices <span class="citation" data-cites="carpentrieslab2022">(<a href="#ref-carpentrieslab2022" role="doc-biblioref">The Carpentries 2022</a>)</span>. Where tutorials have undergone external pedagogical or scholarly review, we will link to that review rather than repeat it. Our guidance will distinguish nominations from author submissions and explain procedures for correcting, removing, or archiving entries. It will also specify responsibility for maintaining each part of tutorialverse.</p>
+<p>Authors will submit entries through structured pull requests; others can nominate tutorials. Drawing on <a href="https://devguide.ropensci.org/softwarereview_author.html">rOpenSci’s review process</a> and Carpentries lesson-review practices <span class="citation" data-cites="carpentrieslab2022">(<a href="#ref-carpentrieslab2022" role="doc-biblioref">The Carpentries 2022</a>)</span>, automated checks will precede human review of metadata completeness, scope, licensing, maintenance information, and declared accessibility. We will record external pedagogical or scholarly reviews separately. Registry entries will distinguish review history from current validation and maintenance status. Governance guidance will assign maintenance responsibilities and explain how to contact maintainers, correct or remove entries, and archive stale resources.</p>
 <p>We will use four small example tutorials to test the adapters: renv, package development with usethis and devtools, an introductory DESeq2 workflow, and a Carpentries R companion. We will choose representative exercises and adapt existing material under compatible licenses. Bharti’s r-for-beginners lessons and Bioconductor training resources offer starting points.</p>
 <p>These examples will test metadata mapping, validation reports, and each engine’s checks; the indexing pilot will test how existing tutorials are described and found. The four examples will collectively cover all three adapters, without requiring every tutorial to run under every engine. Tests will include browser interaction where supported and local or server execution where needed. Three or four small integration templates will show authors how to connect existing lessons through their chosen engine.</p>
 </section>
@@ -2308,7 +2308,7 @@ vertical-align: -.125em;
 <h1>Project plan</h1>
 <section id="preliminary-work" class="level2">
 <h2 class="anchored" data-anchor-id="preliminary-work">Preliminary work</h2>
-<p>The <a href="https://github.com/tutorial-verse/tutorialverse">tutorialverse prototype</a> reads YAML metadata and checks required fields, field types, engine identifiers, URL syntax, and duplicate IDs when other record IDs are supplied. It returns structured pass/fail results and field-level issues. Local tests pass using synthetic records, including records labeled learnr, learnr2, and Quarto Live. The prototype does not contact lesson URLs, render tutorials, or run exercises. Engine integration and indexing real tutorials remain proposed work. Our review of existing tools and <a href="https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742">community feedback</a> informed this scope.</p>
+<p>We have implemented an initial tutorialverse prototype supporting learnr, learnr2, and Quarto Live. The package validates common tutorial metadata, checks source and published URLs, and uses engine adapters to render trusted local tutorials while producing a common validation report. The <a href="https://github.com/tutorial-verse/tutorialverse/blob/3384ae6fd31f2f4d4538ced5cd9f02dc6aaa2216/prototype/adapter-review.md">adapter review</a> documents successful renders of one public tutorial per engine on macOS. Interactive exercise execution and accessibility remain explicitly unsupported rather than being inferred from successful rendering. Cross-platform CI, curated registry records, and measurements of author effort remain proposed work.</p>
 </section>
 <section id="schedule-and-working-practices" class="level2">
 <h2 class="anchored" data-anchor-id="schedule-and-working-practices">Schedule and working practices</h2>
@@ -2330,7 +2330,7 @@ vertical-align: -.125em;
 </tr>
 <tr class="even">
 <td>Months 3–5</td>
-<td>Implement the three adapters and <code>check_tutorial()</code>. Publish a capability table and common report format. Test valid examples and known failures.</td>
+<td>Harden the three adapters and extend <code>check_tutorial()</code>. Publish a capability table and common report format. Test valid examples and known failures in Linux, macOS, and Windows CI.</td>
 </tr>
 <tr class="odd">
 <td>Months 6–8</td>
@@ -2418,64 +2418,16 @@ vertical-align: -.125em;
 </section>
 <section id="risks-and-maintenance" class="level2">
 <h2 class="anchored" data-anchor-id="risks-and-maintenance">Risks and maintenance</h2>
-<p>Adoption is the main uncertainty. Authors may find the schema burdensome if it duplicates metadata they already maintain. We will reuse existing metadata and use early consultation and the indexing pilot to measure author effort, then revise the requirements before finalizing version 1.0.</p>
+<p>The prototype demonstrates the adapter model; adoption remains the main uncertainty. Authors may find the schema burdensome if it duplicates metadata they already maintain. The next experiment is the 5–10-tutorial registry pilot: we will record which fields are reused, supplied manually, or unknown, and measure author effort. These findings and early consultation will guide revisions before version 1.0.</p>
 <p>Engine changes could break adapters or expose differences in test coverage. We will document supported versions and browser or server requirements, and use the example tutorials to detect regressions.</p>
 <p>We will document contribution and governance procedures so others can maintain the registry without relying on us for every change. Entries will name maintainers and retain source links, validation dates, and status. Scheduled checks and an archival policy will help contributors address stale resources.</p>
 </section>
 </section>
 <section id="success" class="level1">
 <h1>Success</h1>
-<p>Learners will be able to judge whether a tutorial suits their goals, and instructors whether they can reuse it. The registry will show available requirements, check results, review status, and missing information. Authors can also describe and check tutorials in their own repositories without joining the registry.</p>
-<p>The table compares documented results with grant-end targets. We will update the baseline at grant start to include any completed pilot work.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 22%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Measure</th>
-<th>Documented baseline</th>
-<th>Grant-end target</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Adapters with capability reports</td>
-<td>0 demonstrated</td>
-<td>3 initial adapters</td>
-</tr>
-<tr class="even">
-<td>Tutorials indexed through tutorialverse</td>
-<td>0 demonstrated</td>
-<td>5–10 across supported formats</td>
-</tr>
-<tr class="odd">
-<td>External reviewers of schema, adapters, or tutorials</td>
-<td>0 documented reviews</td>
-<td>At least 3</td>
-</tr>
-<tr class="even">
-<td>Example tutorials tested in CI</td>
-<td>0 demonstrated</td>
-<td>4, collectively covering all adapters</td>
-</tr>
-<tr class="odd">
-<td>Integration templates</td>
-<td>0 demonstrated</td>
-<td>3–4</td>
-</tr>
-<tr class="even">
-<td>Reusable tutorial-validation workflow</td>
-<td>0 demonstrated</td>
-<td>At least 1</td>
-</tr>
-</tbody>
-</table>
-<p>Completion requires version 1.0 of the schema, R package, and registry. The registry pilot must also test published review and governance policies, including procedures for nominations, human review, and handling stale resources.</p>
-<p>Validation will apply only to the checks reported for each engine and environment. During the grant, we will track external submissions and review participation, and measure the effort authors spend supplying missing metadata. After release, we will use outdated check results and broken links to prioritize maintenance, and package coverage to identify gaps in the registry.</p>
-<p>Future work could add adapters for other tutorial engines or connect the registry to pkgdown, R-universe, and educational catalogs. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the initial funded scope.</p>
+<p>Completion requires version 1.0 of the metadata schema, R package, and searchable registry. Deliverables will include three hardened adapters tested in Linux, macOS, and Windows CI; 5–10 indexed tutorials; and four example tutorials tested in CI, collectively covering all three adapters. We will publish three or four integration templates and at least one reusable validation workflow.</p>
+<p>At least three external contributors will review the schema, adapters, or tutorials. The registry pilot will test nomination, review, and stale-entry procedures. We will document check results and reviewer feedback, track external submissions, and measure author effort, including whether assisted metadata drafting reduces manual work.</p>
+<p>Future work could support additional engines and educational-catalog integrations. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the funded scope.</p>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
