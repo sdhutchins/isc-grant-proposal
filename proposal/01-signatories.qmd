@@ -1,6 +1,6 @@
 # Signatories and community support
 
-Shaurita D. Hutchins and Samuel Bharti are PhD candidates at the University of Alabama at Birmingham and will co-lead the project.
+Shaurita D. Hutchins will lead the project in collaboration with Samuel Bharti. Both are PhD candidates at the University of Alabama at Birmingham.
 
 **Hutchins will lead educational design and community development.** She will develop the metadata schema, coordinate example tutorials, and establish accessibility and contribution guidance. A computational biologist trained in genetics, genomics, and bioinformatics, she brings experience in Carpentries instruction and reproducible R/Bioconductor workflows. She received a grant to develop [Prioritizing Candidate Genetic Variants Using GTEx, HuBMAP, and IDG](https://cfdetrainingcenter.github.io/candidate-genetic-variants/) for the Common Fund Data Ecosystem (CFDE) Training Center. Built with Quarto Live, the module combines coding activities that run in the browser with knowledge checks, giving her direct experience developing interactive learning materials.
 

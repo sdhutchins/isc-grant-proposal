@@ -1,6 +1,6 @@
 # tutorialverse: Interoperability and quality infrastructure for R tutorials
 
-A proposal to the R Consortium Infrastructure Steering Committee (ISC), co-led by Shaurita D. Hutchins and Samuel Bharti, both PhD candidates at the University of Alabama at Birmingham.
+A proposal to the R Consortium Infrastructure Steering Committee (ISC), led by Shaurita D. Hutchins in collaboration with Samuel Bharti. Both are PhD candidates at the University of Alabama at Birmingham.
 
 tutorialverse provides shared metadata, validation, discovery, and review infrastructure so interactive R tutorials can be created with different tools while participating in one maintainable ecosystem.
 
@@ -8,7 +8,7 @@ The 12-month project will deliver a minimal metadata schema and an R validation 
 
 Existing engines will run the tutorials. Browser runtimes, new execution engines, and static-hosting infrastructure are outside the funded scope. Four small reference tutorials will test the adapters across different teaching contexts: `renv`, package development with `usethis` and `devtools`, `DESeq2`, and an introductory Carpentries R lesson.
 
-The requested budget is **USD 10,000**, covering 200 hours at USD 50/hour across five milestones: 100 hours and USD 5,000 each for Hutchins and Bharti. The indexing pilot will cover 5–10 existing tutorials, and at least three external contributors will review the work during the grant.
+The requested budget is **USD 10,000**, covering 200 hours at USD 50/hour across five milestones: 120 hours and USD 6,000 for Hutchins (60%), and 80 hours and USD 4,000 for Bharti (40%). The indexing pilot will cover 5–10 existing tutorials, and at least three external contributors will review the work during the grant.
 
 ## Evidence needed before submission
 
@@ -39,7 +39,7 @@ quarto render isc-proposal.qmd --to html
 
 | Path | Content |
 |---|---|
-| `isc-proposal.qmd` | Title, both co-leads, and section includes |
+| `isc-proposal.qmd` | Title, both authors, and section includes |
 | `proposal/00-exec-summary.qmd` | Executive summary |
 | `proposal/01-signatories.qmd` | Responsibilities, public feedback, and planned consultation |
 | `proposal/02-problemdefinition.qmd` | The interoperability problem and existing engines |
