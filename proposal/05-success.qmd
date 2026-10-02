@@ -1,20 +1,7 @@
 # Success
 
-Learners will be able to judge whether a tutorial suits their goals, and instructors whether they can reuse it. The registry will show available requirements, check results, review status, and missing information. Authors can also describe and check tutorials in their own repositories without joining the registry.
+Completion requires version 1.0 of the metadata schema, R package, and searchable registry. Deliverables will include three hardened adapters tested in Linux, macOS, and Windows CI; 5–10 indexed tutorials; and four example tutorials tested in CI, collectively covering all three adapters. We will publish three or four integration templates and at least one reusable validation workflow.
 
-The table compares documented results with grant-end targets. We will update the baseline at grant start to include any completed pilot work.
+At least three external contributors will review the schema, adapters, or tutorials. The registry pilot will test nomination, review, and stale-entry procedures. We will document check results and reviewer feedback, track external submissions, and measure author effort, including whether assisted metadata drafting reduces manual work.
 
-| Measure | Documented baseline | Grant-end target |
-|--------------------------------|-------------------|--------------------------------|
-| Adapters with capability reports | 0 demonstrated | 3 initial adapters |
-| Tutorials indexed through tutorialverse | 0 demonstrated | 5–10 across supported formats |
-| External reviewers of schema, adapters, or tutorials | 0 documented reviews | At least 3 |
-| Example tutorials tested in CI | 0 demonstrated | 4, collectively covering all adapters |
-| Integration templates | 0 demonstrated | 3–4 |
-| Reusable tutorial-validation workflow | 0 demonstrated | At least 1 |
-
-Completion requires version 1.0 of the schema, R package, and registry. The registry pilot must also test published review and governance policies, including procedures for nominations, human review, and handling stale resources.
-
-Validation will apply only to the checks reported for each engine and environment. During the grant, we will track external submissions and review participation, and measure the effort authors spend supplying missing metadata. After release, we will use outdated check results and broken links to prioritize maintenance, and package coverage to identify gaps in the registry.
-
-Future work could add adapters for other tutorial engines or connect the registry to pkgdown, R-universe, and educational catalogs. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the initial funded scope.
+Future work could support additional engines and educational-catalog integrations. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the funded scope.
