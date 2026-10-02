@@ -1,22 +1,20 @@
 # Success
 
-## Definition of done
+Authors will be able to describe and check existing tutorials without changing tools. Instructors will be able to compare requirements, validation records, and review status across engines.
 
-- `tutorialindex` installs from r-universe with R CMD check clean on Linux, macOS and Windows, and is submitted to CRAN.
-- `create_tutorial()` produces a repository that publishes to GitHub Pages on first push.
-- The DESeq2 reference tutorial runs its exercises in the browser in Chrome, Firefox and Safari.
-- The index site lists at least 50 validated entries, including the three reference tutorials, with search by package, level and topic, and publishes `index.json`.
-- At least five tutorials by other authors use the template.
+The baseline records results currently documented for tutorialverse. We will update it at grant start to include any completed pilot work.
 
-## Measuring success
+| Measure | Documented baseline | Grant-end target |
+|--------------------------------|-------------------|--------------------------------|
+| Adapters with capability reports | 0 demonstrated | 3 initial adapters |
+| Tutorials indexed through tutorialverse | 0 demonstrated | 5–10 across supported formats |
+| External reviewers of schema, adapters, or tutorials | 0 documented reviews | At least 3 |
+| Example tutorials tested in CI | 0 demonstrated | 4, collectively covering all adapters |
+| Integration templates | 0 demonstrated | 3–4 |
+| Reusable tutorial-validation workflow | 0 demonstrated | At least 1 |
 
-During the grant: pull requests to the index from people other than me, template repositories created (GitHub counts them), and comments on the schema discussion. After the grant: entries per month, unique packages covered, the share of entries that pass the weekly link check, and whether R-universe, pkgdown or the Bioconductor Training Committee link to entries. The number I care about most is packages covered, because it shows where teaching material is missing.
+Completion also requires version 1.0 of the schema, R package, and registry, with review, governance, and stale-resource policies published and exercised in the pilot.
 
-## Future work
+Validation success will mean passing the checks reported for that engine and environment. During the grant, we will track missing metadata and the work authors need to supply it, alongside external submissions and review participation. After release, validation freshness and broken links will guide maintenance; the packages represented in the registry will help identify gaps in coverage.
 
-- An open review track for tutorials that want a badge beyond validation, modelled on the Carpentries Lab and rOpenSci review.
-- An accessibility check in the template's action (contrast, headings, keyboard focus) using an existing tool.
-- Companions for the other Bioconductor Training Committee lessons (bioc-intro, bioc-scrnaseq).
-- A pkgdown and R-universe integration that shows "tutorials for this package" from the index.
-- Translations, using the R Consortium's translation glossary project.
-- Migration guides from learnr to quarto-live with tutorizeR, written with its maintainer.
+Future work could add adapters for other tutorial engines or connect the registry to pkgdown, R-universe, and educational catalogs. Multilingual metadata, richer accessibility checks, and instructor collections remain outside the initial funded scope.

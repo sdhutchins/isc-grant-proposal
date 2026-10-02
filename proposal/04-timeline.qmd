@@ -1,33 +1,42 @@
 # Project plan
 
-## Start-up phase
+## Preliminary work
 
-Month 1 (January 2027): create a GitHub organisation for the three repositories, with MIT for code and CC BY 4.0 for tutorial content and documentation, a code of conduct, and issue and pull request templates. Publish the draft metadata schema as a discussion and send it to the people listed under Consulted and to the maintainers of quarto-live, learnr2 and tutorizeR for two weeks of comment. Set up r-universe for the package and GitHub Actions for R CMD check. Reporting: a monthly progress note in the index repository and a blog post at each milestone.
+We have reviewed tutorial engines, registries, and metadata schemas and used [community feedback](https://github.com/rstudio/learnr/issues/766#issuecomment-5944898742) to focus the project on common metadata and checks. Our prior teaching work includes [Hutchins's candidate genetic variants module](https://cfdetrainingcenter.github.io/candidate-genetic-variants/) and [Bharti's r-for-beginners lessons](https://github.com/samuelbharti/r-for-beginners).
 
-## Technical delivery
+## Schedule and working practices
 
-| Milestone | Deliverables | Done when |
-|---|---|---|
-| M1, schema, validator, template. January to March 2027. | Metadata schema 1.0. `validate_entry()` and `create_tutorial()`. Template repository with quarto-live, gradethis, the publish action and the r-universe repos setting. Announcement post. | A tutorial made with `create_tutorial()` publishes to GitHub Pages from a fresh repository with no manual steps. The template page loads a Bioconductor package from bioc.r-universe.dev in Chrome, Firefox and Safari. |
-| M2, index site and reference tutorials. April to June 2027. | Index repository with validation action, nightly build, weekly link check and staleness rule. Site with filters. `tutorial_search()`. Three reference tutorials: introductory R from r-for-beginners, DESeq2 companion to bioc-rnaseq, package development with usethis and devtools. | The three tutorials are listed, pass validation, and their exercises grade in the browser. A pull request with a broken entry fails the check with a message that names the field. |
-| M3, seeding and documentation. July to August 2027. | 50 entries for existing tutorials sent to their authors. Author guide, reviewer checklist adapted from the Carpentries Lab, and a page on accessibility basics. Delivery post. | At least 50 entries merged. At least five tutorials by other authors use the template. |
+| Period | Work and completion criteria |
+|----------|----------------------------------------|
+| Months 1–2 | Review the eight-field schema, map metadata from existing tutorials into pilot records, establish repositories and governance, and begin the example tutorials. |
+| Months 3–5 | Implement the three adapters and `check_tutorial()`. Publish a capability table and common report format. Test valid examples and known failures. |
+| Months 6–8 | Build registry ingestion and search. Publish `index.json` and the R search interface. Run the pilot records through the package and document author effort. |
+| Months 9–10 | Pilot nominations and human review with external contributors. Test stale-entry handling and gather usability feedback. |
+| Months 11–12 | Complete example tutorial and integration-template checks. Address high-priority feedback and release version 1.0 of the package, specification, and registry with maintenance guidance. |
 
-Target dates: schema and template by 31 March 2027, index live by 30 June 2027, 50 entries by 31 August 2027.
+We will work openly on GitHub, using issues and milestones to track progress and pull requests for code review. We will publish monthly updates and milestone reports and invite community feedback. Development will use testthat for tests, pkgdown for documentation, and renv to reproduce software environments, with R-universe distribution where appropriate.
 
-Failure modes and recovery. If quarto-live changes its exercise syntax, the template pins a version and updates by pull request, and existing tutorials keep working because each carries its own copy of the extension. If authors do not respond to seed pull requests, entries for openly licensed tutorials are merged with the author named and a note that the author has not yet confirmed, and the author can edit or remove them at any time. If a Bioconductor package has no WebAssembly build, the reference tutorial documents the workaround (a smaller example dataset or a precomputed object) and the index entry records the limitation.
+Code will use the MIT license. Newly authored content and documentation will use CC BY 4.0 where compatible with source obligations; adaptations will retain required attribution and licensing. We will share release announcements and integration guidance with R education communities.
 
-## Other aspects
+## Budget and funding
 
-MIT license for code, CC BY 4.0 for content. All three repositories public from day one. The package on r-universe and submitted to CRAN at milestone 2. Announcement and delivery posts offered to the R Consortium blog. Posts to the Bioconductor support site, the Carpentries community forum and the R-Ladies and rOpenSci community channels. A lightning talk at useR! 2027 at my own cost.
+**Requested budget: USD 10,000.** This funds 200 hours at USD 50/hour, allocated across the five milestones below. No hardware, cloud, travel, or fee costs are included.
 
-## Budget & funding plan
+| Milestone | Hutchins (h) | Bharti (h) | Total (h) | USD |
+|---------------------------|------------:|----------:|----------:|----------:|
+| Minimal schema | 20 | 10 | 30 | 1,500 |
+| Adapters | 5 | 45 | 50 | 2,500 |
+| Validation package | 15 | 40 | 55 | 2,750 |
+| Registry | 15 | 20 | 35 | 1,750 |
+| Review, governance, and examples | 25 | 5 | 30 | 1,500 |
+| Total | 80 | 120 | 200 | 10,000 |
 
-Total request: 10,000 USD. All labor at 50 USD per hour, 200 hours. No hardware, cloud, travel or fees. GitHub Actions and Pages are free for public repositories.
+If funding is reduced, the schema and validation tools can be used independently of the registry.
 
-| Milestone | Hours | Amount (USD) |
-|---|---|---|
-| M1, schema, validator, template | 70 | 3,500 |
-| M2, index site and reference tutorials | 90 | 4,500 |
-| M3, seeding and documentation | 40 | 2,000 |
+## Risks and maintenance
 
-If the ISC funds part of the request, M1 stands alone: authors get a working publishing template and a validated metadata file before an index exists.
+Adoption is the main uncertainty. A metadata schema will have little value if authors find it burdensome or it duplicates fields they already maintain. Early consultation and the indexing pilot will test this assumption. We will reuse existing metadata and revise requirements in response to documented author effort before freezing version 1.0.
+
+Engine changes could break adapters or expose differences in test coverage. We will document supported versions and browser or server requirements, and use the example tutorials to detect regressions.
+
+The registry will need ongoing attention. Entries will name maintainers and retain source links, validation dates, and status. Scheduled checks and an archival policy will help contributors address stale resources. Public contribution and governance guidance will allow others to maintain the project without relying on the two leads for every change.

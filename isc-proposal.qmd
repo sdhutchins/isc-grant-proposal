@@ -1,6 +1,10 @@
 ---
-title: "An index, template and validator for browser-run R tutorials"
+title: "tutorialverse: Interoperability and quality infrastructure for R tutorials"
 author:
+  - name: Shaurita D. Hutchins
+    orcid: 0000-0002-7687-0059
+    affiliations:
+      - "University of Alabama at Birmingham"
   - name: Samuel Bharti
     orcid: 0000-0003-4190-7058
     affiliations:
